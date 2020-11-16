@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  kpt:
+    image: kpt
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
