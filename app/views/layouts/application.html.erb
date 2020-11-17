@@ -11,14 +11,16 @@
 
   <body>
     <nav>
-    <div class="search">
-      <input type="text" class="search__input" placeholder="検索">
-    </div>
-    <div>
-
-    </div>
+      <%if user_signed_in? %>
+        <div class="search">
+          <input type="text" class="search__input" placeholder="検索">
+        </div>
+        <div class="sign_out">
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </div>
+      <%end%>
     </nav>
-    <main>
+    <main id="app">
       <%= yield %>
     </main>
     <footer>
