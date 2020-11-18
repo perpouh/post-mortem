@@ -1,7 +1,7 @@
 <h1>Tickets#show</h1>
 <p>Find me in app/views/tickets/show.html.erb</p>
 
-<%= @ticket.body %>
+<%= tomatosoup(@ticket.body) %>
 
 <ul>
 <% @ticket.comments.each do |comment|%>
