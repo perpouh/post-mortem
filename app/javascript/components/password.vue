@@ -76,20 +76,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.field{
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-input[type="email"]{
-  background-color: #f1f1f1;
-  border: 1px solid #f1f1f1;
-  border-radius: 2px;
-  box-sizing: border-box;
-  font-size: 14px;
-  padding: 13px;
-  width: 100%;
-}
-</style>
