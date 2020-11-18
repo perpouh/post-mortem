@@ -14,7 +14,7 @@
     <%= f.text_field :email, list: :userlist %>
     <datalist id="userlist">
       <% User.all.each do |user|%>
-        <option value="<%= user.email %>">名前カラム作り忘れた(<%= user.email %>)</option>
+        <option value="<%= user.email %>"><%= user.username %>(<%= user.email %>)</option>
       <% end %>
     </datalist>
     <%= f.submit %>
