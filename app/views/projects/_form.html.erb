@@ -1,0 +1,23 @@
+<%= form_with(model: project) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :repository_url %>
+    <%= f.text_field :repository_url %>
+  </div>
+  <div class="field">
+    <%= f.label :backlog_url %>
+    <%= f.text_field :backlog_url %>
+  </div>
+  <div class="field">
+    <%= f.label :jira_url %>
+    <%= f.text_field :jira_url %>
+  </div>
+  <div class="field">
+    <%= f.label :confluence_url %>
+    <%= f.text_field :confluence_url %>
+  </div>
+  <%= f.submit %>
+<% end %>

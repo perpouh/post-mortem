@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_083500) do
   end
 
   create_table "tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "project_id"
     t.string "body"
     t.integer "type"
     t.datetime "created_at", precision: 6, null: false

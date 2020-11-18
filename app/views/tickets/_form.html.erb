@@ -1,0 +1,5 @@
+<%= form_with(model: [@project, @ticket]) do |f| %>
+  <%= f.text_area :body %>
+  <%= f.number_field :type %>
+  <%= f.submit %>
+<% end %>

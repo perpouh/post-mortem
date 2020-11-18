@@ -1,0 +1,16 @@
+<h1>Tickets#show</h1>
+<p>Find me in app/views/tickets/show.html.erb</p>
+
+<%= @ticket.body %>
+
+<ul>
+<% @ticket.comments.each do |comment|%>
+<li><%= comment.body %></li>
+<% end %>
+<li>
+<%= form_with(url: project_ticket_comments_path({project_id: @project.id, ticket_id: @ticket.id})) do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
+</li>
+</ul>
