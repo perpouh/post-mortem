@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  include TagExtractor
+
   def index
   end
 
@@ -16,6 +18,10 @@ class TicketsController < ApplicationController
     #　TODO: 参画していないプロジェクトにはチケット作れない処理
     @project = Project.find(params[:project_id])
     @project.tickets.create(ticket_params)
+
+    extract_tags(ticket_params[:body]).each do |tag|
+      Tag.find_or_create_by(body: tag)
+    end
   end
 
   def edit
@@ -26,6 +32,10 @@ class TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     @ticket.update(ticket_params)
+
+    extract_tags(ticket_params[:body]).each do |tag|
+      Tag.find_or_create_by(body: tag)
+    end
   end
 
   private

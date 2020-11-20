@@ -14,8 +14,4 @@ module HashtagHelper
     end
     simple_format(str)
   end
-
-  def extract_tags
-
-  end
 end
