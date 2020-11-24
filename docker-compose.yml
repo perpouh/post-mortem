@@ -30,8 +30,8 @@ services:
       - tmp:/server/app/tmp
       - public:/server/app/public
     depends_on:
-      - app
-  app:
+      - client
+  server:
     container_name: 'post-mortem_app'
     build:
       context: ./server
@@ -53,6 +53,14 @@ services:
       - public:/app/public
     links:
       - db
+  client:
+    build: ./client
+    volumes:
+      - ./data/www:/app
+    command: yarn serve
+    tty: true
+    links:
+      - server
 volumes:
   mysql_data:
   bundle:
