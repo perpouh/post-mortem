@@ -3,11 +3,11 @@
 import Vue from 'vue/dist/vue.esm'
 import App from './App'
 import router from './route'
-// import Http from './http'
+import Http from './http'
 // import Toasted from 'vue-toasted'
 // import store from './store'
 
-// Vue.prototype.$http = Http
+Vue.prototype.$http = Http
 // Vue.use(Toasted)
 Vue.config.productionTip = false
 
