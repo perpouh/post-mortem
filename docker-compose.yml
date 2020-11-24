@@ -10,11 +10,11 @@ services:
     ports:
       - "33006:3306"
     volumes:
-      - ./containers/mysql_data:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
     command: --innodb-use-native-aio=0
   nginx:
     container_name: 'post-mortem_nginx'
-    build: ./containers/nginx
+    build: ./nginx
     command: >
       /bin/bash -c
       "envsubst '$$NGINX_SERVER_NAME $$NGINX_SERVER_PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
@@ -27,14 +27,14 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - tmp:/app/tmp
-      - public:/app/public
+      - tmp:/server/app/tmp
+      - public:/server/app/public
     depends_on:
       - app
   app:
     container_name: 'post-mortem_app'
     build:
-      context: .
+      context: ./server
       args:
         ASSETS_PRECOMPILE: 'false'
     environment:
@@ -47,7 +47,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - .:/app
+      - ./server:/app
       - bundle:/usr/local/bundle
       - tmp:/app/tmp
       - public:/app/public
