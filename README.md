@@ -1,42 +1,24 @@
 # README
 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-![Ruby on Rails 6.0](https://img.shields.io/badge/Ruby%20on%20Rails-6.0-CC0000) ![Vue.js 3](https://img.shields.io/badge/Vue.js-3.0-4FC08D)
+Things you may want to cover:
 
-あとDockerとAWSとSlackAPI
+* Ruby version
 
-Post mortem = 振り返り手法。事後検証。
+* System dependencies
 
-## ユーザー管理
+* Configuration
 
- - 主にdevise
- - ロジックを追加して特定のドメイン以外では登録できない && メール認証が必須なので社内の人間しかログインできない仕様
- - パスワードを三回間違えるとロックが掛かり、メール認証からやり直し
+* Database creation
 
-## プロジェクト管理
+* Database initialization
 
- - プロジェクトを作ったりメンバーをアサインしたりする
-   - どう考えても面倒なので[Backlogからユーザーの一覧を取得する](https://developer.nulab.com/ja/docs/backlog/api/2/get-user-list)ことにした
- - 関連する技術とかタグ付けすることで似たプロジェクトのKPTを参照できるようにする
-   - 例えばRailsを使うときには過去のRailsプロジェクトの振り返りを参照できる
+* How to run the test suite
 
-## 発言のハードルを下げ効率的な振り返りを目指す→匿名化
+* Services (job queues, cache servers, search engines, etc.)
 
-「ミスが多かったので気をつける」みたいな自己反省はひとりでやってください
+* Deployment instructions
 
- - 匿名でチケットを作成することにより発言ハードルを下げる
- - 任意のタイミングでチケットを上げて貰ってからミーティングを行うこともできる
-   - →改善方法だけを議題とすることで建設的かつコンパクトなミーティングが可能となる
- - チケットにコメント欄を設けることでスムーズな議事録の作成とその後の参照しやすさに貢献する
-
-## だいたい「やって終わり」になってしまう問題→通知botを生やす
-
-KPTがその後に役立てられたのなんか見たことないです
-
- - 毎週末に一週間の振り返りを促す通知botを生やす
- - 週の頭に前週の反省点の確認を促す通知botを生やす
-
-メモ）
- - 参加していないプロジェクトにチケットは立てられない
- - 参加していないプロジェクトのチケットにもコメントはできる
- - コメントからコメントへのリンク(引用)をどうにかする
+* ...
