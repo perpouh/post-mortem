@@ -13,7 +13,7 @@ export default{
   },
   methods: {
     fetchData () {
-      this.$http.get("http://localhost:3030/projects")()
+      this.$http.get("/projects")()
       .then(function(res){
         console.log(res)
       })
