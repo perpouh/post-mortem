@@ -10,7 +10,7 @@
     <div>
       <h2>メンバー一覧</h2>
       <ul>
-        <li></li>
+        <li v-for="member in members" v-bind:key="member.id">{{member.name}}</li>
       </ul>
     </div>
   </layout>
@@ -25,7 +25,8 @@ export default {
   },
   data() {
     return {
-      tickets: []
+      tickets: [],
+      members: []
     }
   },
   created(){
@@ -37,9 +38,10 @@ export default {
   methods: {
     fetchData () {
       let projId = this.$route.params.id
-      this.$http.get(`/projects/${projId}/tickets`)()
+      this.$http.get(`/projects/${projId}`)()
       .then(function(res){
-        this.tickets = res.data
+        this.tickets = res.data.project.tickets
+        this.members = res.data.project.members
       }.bind(this))
     }
   }
