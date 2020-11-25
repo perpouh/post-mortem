@@ -37,7 +37,7 @@ module App
     # Permit cross origin
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "*" # TODO: client以外からのアクセスを遮断する
+        origins ENV['CLIENT_HOST']
         resource "*",
           headers: :any,
           methods: [:get, :post, :options, :head]
