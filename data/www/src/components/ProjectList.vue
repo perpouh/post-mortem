@@ -1,10 +1,25 @@
 <template>
-  <p>ねこ</p>
+  <layout>
+    <ul>
+      <li v-for="project in projects" v-bind:key="project.id">
+        {{project.name}}
+      </li>
+    </ul>
+  </layout>
 </template>
 
 <script>
+import Layout from './Layout'
 export default{
   name: 'ProjectList',
+  data(){
+    return {
+      projects : []
+    }
+  },
+  components: {
+    Layout
+  },
   created(){
     this.fetchData()
   },
@@ -15,8 +30,8 @@ export default{
     fetchData () {
       this.$http.get("/projects")()
       .then(function(res){
-        console.log(res)
-      })
+        this.projects = res.data
+      }.bind(this))
     }
   }
 }
