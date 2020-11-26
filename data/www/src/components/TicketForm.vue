@@ -34,6 +34,21 @@ export default{
       this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
       .then(function(res){
         console.log(res)
+        this.$toasted.success('チケットを作成しました', { 
+          theme: "bubble", 
+          position: "top-center", 
+          duration : 3000
+        })
+        this.ticket.body = ""
+        this.ticket.opinion_type = 1
+      }.bind(this))
+      .catch(function (error) {
+        console.log(error)
+        this.$toasted.error('チケットの作成に失敗しました', { 
+          theme: "bubble", 
+          position: "top-center", 
+          duration : 3000
+        })
       }.bind(this))
     }
   }
