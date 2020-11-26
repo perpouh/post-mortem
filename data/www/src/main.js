@@ -6,9 +6,12 @@ import router from './route'
 import Http from './http'
 import Toasted from 'vue-toasted'
 // import store from './store'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 Vue.prototype.$http = Http
 Vue.use(Toasted)
+Vue.use(Loading)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

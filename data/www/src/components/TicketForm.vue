@@ -31,6 +31,12 @@ export default{
   },
   methods: {
     send: function(){
+      let loader = this.$loading.show({
+        // Optional parameters
+        container: null,
+        canCancel: false,
+      });
+
       this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
       .then(function(res){
         console.log(res)
@@ -50,6 +56,10 @@ export default{
           duration : 3000
         })
       }.bind(this))
+      .then(function(res){
+        console.log(res)
+        loader.hide()
+      })
     }
   }
 }

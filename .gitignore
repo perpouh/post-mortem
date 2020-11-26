@@ -27,3 +27,6 @@ server/.byebug_history
 server/config/master.key
 
 /mysql_data/**/*
+
+gh-pages
+gh-pages.pub
