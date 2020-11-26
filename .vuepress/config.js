@@ -1,7 +1,7 @@
 module.exports = {
   title: '',
   description: '活動拠点です。',
-  base: '/blog/',
+  base: '/post-mortem/',
   dest: 'docs',
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: '/assets/img/favicon.ico' }],
