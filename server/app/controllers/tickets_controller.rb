@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   include TagExtractor
 
   def index
+    @tickets = Ticket.where({project_id: params[:project_id]})
   end
 
   def show
@@ -40,6 +41,6 @@ class TicketsController < ApplicationController
 
   private
   def ticket_params
-    params.require(:ticket).permit(:body)
+    params.require(:ticket).permit(:body, :opinion_type)
   end
 end

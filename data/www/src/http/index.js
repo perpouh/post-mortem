@@ -8,5 +8,6 @@ const axios = Axios.create({
   responseType: 'json'
 })
 export default {
-  get: url => params => axios.get(url, { params: { params } })
+  get: url => params => axios.get(url, { params }),
+  post: url => data => axios.post(url, data)
 }
