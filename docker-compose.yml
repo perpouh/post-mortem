@@ -62,6 +62,8 @@ services:
       - ./data/www:/app
     command: yarn serve
     tty: true
+    environment:
+       VUE_APP_API_ENDPOINT: http://localhost:3030
     links:
       - server
 volumes:
