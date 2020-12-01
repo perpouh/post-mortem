@@ -1,0 +1,9 @@
+
+@import 'reset.scss';
+@import 'mixin.scss';
+@import 'form.scss';
+
+body{
+  background-color: $background-color;
+  color: $main-text-color;
+}
