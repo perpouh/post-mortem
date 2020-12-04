@@ -13,7 +13,9 @@
     </div>
     <div id="ticket" class="tab-body" v-show="ticket">
       <h2>新着チケット</h2>
-      <div>作成</div>
+      <div class="card-header">
+        <button class="btn-primary">作成</button>
+      </div>
       <ul>
         <ticket v-for="ticket in tickets" v-bind:key="ticket.id" @click="gotoDetail(ticket.id)"></ticket>
       </ul>

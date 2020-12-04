@@ -13,3 +13,9 @@ input[type="email"]{
   padding: 13px;
   width: 100%;
 }
+
+button{
+  &.btn-primary{
+    @include button()
+  }
+}

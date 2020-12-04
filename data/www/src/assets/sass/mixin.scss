@@ -85,20 +85,20 @@ $succeed: lime;
 }
 
 // 色指定ボタン
-@mixin button($button_color: #ffffff){
-  background-color: $button_color;
-  @include border-radius(4px);
-  color: rgba(255,255,255,1);
+@mixin button($button_color: #eee){
+  background-color: transparent;
+  border: rgba(0,0,0,.1) 1px solid;
+  border-radius: 4px;
+  color: #222;
+  font-weight: bold;
   text-align:center;
   padding:10px;
   text-decoration:none;
   line-height:1em;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
   -webkit-tap-highlight-color: transparent;
   transition: .3s ease-out;
+  min-width: 100px;
   &:hover{
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
-    text-decoration: none;
-    color:rgba(255,255,255,1);
+    background-color: rgba(0,0,0,.05);
   }
 }

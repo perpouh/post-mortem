@@ -7,3 +7,9 @@ body{
   background-color: $background-color;
   color: $main-text-color;
 }
+
+div::after{
+  clear:both;
+  display:block;
+  content:'';
+}
