@@ -13,3 +13,21 @@ div::after{
   display:block;
   content:'';
 }
+
+
+.tab-header{
+  border-bottom: 1px solid #ddd;
+  height: 40px;
+  .tab{
+    float: left;
+    border: solid 1px #ddd;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 4px;
+    &.active{
+      border-bottom: white solid 1px;
+    }
+  }
+}

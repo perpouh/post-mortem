@@ -86,18 +86,19 @@ $succeed: lime;
 
 // 色指定ボタン
 @mixin button($button_color: #eee){
+  -webkit-tap-highlight-color: transparent;
   background-color: transparent;
   border: rgba(0,0,0,.1) 1px solid;
   border-radius: 4px;
   color: #222;
+  display: inline-block;
   font-weight: bold;
-  text-align:center;
-  padding:10px;
-  text-decoration:none;
   line-height:1em;
-  -webkit-tap-highlight-color: transparent;
-  transition: .3s ease-out;
   min-width: 100px;
+  padding:10px;
+  text-align:center;
+  text-decoration:none;
+  transition: .3s ease-out;
   &:hover{
     background-color: rgba(0,0,0,.05);
   }

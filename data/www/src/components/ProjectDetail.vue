@@ -14,7 +14,7 @@
     <div id="ticket" class="tab-body" v-show="ticket">
       <h2>新着チケット</h2>
       <div class="card-header">
-        <button class="btn-primary">作成</button>
+        <router-link :to="`/project/${$route.params.id}/ticket/new`" class="btn-primary">作成</router-link>
       </div>
       <ul>
         <ticket v-for="ticket in tickets" v-bind:key="ticket.id" @click="gotoDetail(ticket.id)"></ticket>
@@ -70,22 +70,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.tab-header{
-  border-bottom: 1px solid #ddd;
-  height: 40px;
-  .tab{
-    float: left;
-    border: solid 1px #ddd;
-    height: 40px;
-    width: 120px;
-    line-height: 40px;
-    text-align: center;
-    margin-left: 4px;
-    &.active{
-      border-bottom: white solid 1px;
-    }
-  }
-}
-</style>

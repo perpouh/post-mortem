@@ -1,33 +1,41 @@
 <template>
   <layout>
     <form>
-      <select v-model="ticket.opinion_type">
-        <option value="keep">Keep</option>
-        <option value="problem">Problem</option>
-        <option value="try">Try</option>
-      </select>
-      <textarea v-model="ticket.body" :placeholder="placeholder"></textarea>
-      <button v-on:click="send()">送信</button>
+      <div>
+        <div class="toggle_radio">
+          <input type="radio" id="keep" value="keep" v-model="ticket.opinion_type">
+          <label for="keep">keep</label>
+          <input type="radio" id="problem" value="problem" v-model="ticket.opinion_type">
+          <label for="problem">Problem</label>
+          <input type="radio" id="try" value="try" v-model="ticket.opinion_type">
+          <label for="try">Try</label>
+        </div>
+        <button class="btn-primary">テンプレート</button>
+      </div>
+      <auto-scale-text-area v-model="ticket.body" :placeholder="placeholder"></auto-scale-text-area>
+      <button v-on:click="send()" class="btn-primary">送信</button>
     </form>
   </layout>
 </template>
 
 <script>
 import Layout from './Layout'
+import AutoScaleTextArea from './parts/AutoScaleTextArea'
 export default{
   name: 'TicketForm',
   data(){
     return {
       ticket: {
         body: "",
-        opinion_type: 1
+        opinion_type: 'keep'
       },
       placeholder: "チケットには #ハッシュタグ をつけることができます。 #Rails #Docker #設計",
       template: ""
     }
   },
   components: {
-    Layout
+    Layout,
+    AutoScaleTextArea
   },
   methods: {
     send: function(){

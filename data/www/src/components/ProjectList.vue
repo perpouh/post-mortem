@@ -2,7 +2,7 @@
   <layout>
     <ul>
       <li v-for="project in projects" v-bind:key="project.id">
-        {{project.name}}
+        <router-link :to="`/project/${project.id}`">{{project.name}}</router-link>
       </li>
     </ul>
   </layout>

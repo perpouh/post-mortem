@@ -14,8 +14,34 @@ input[type="email"]{
   width: 100%;
 }
 
-button{
-  &.btn-primary{
-    @include button()
+.btn-primary{
+  @include button()
+}
+
+.toggle_radio{
+  border: #000 1px solid;
+  border-radius: 4px;
+  display: inline-flex;
+  input[type='radio']{
+    display: none;
+    &:checked + label{
+      background-color: rgba(0,0,0,.05)
+    }
   }
+  label{
+    padding: 0px 12px;
+    box-sizing: border-box;
+    line-height: 2em;
+    height: 100%;
+    &:not(:first-of-type){
+      border-left: #000 solid 1px;
+    }
+  }
+}
+
+textarea{
+  width: 100%;
+  border: 1px solid;
+  padding: 12px;
+  border-radius: 4px;
 }
