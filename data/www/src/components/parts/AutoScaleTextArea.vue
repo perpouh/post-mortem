@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <ul class="tab-header">
       <li class="tab" :class="{ active: write }" @click="tab = 'write'">
         Write
@@ -19,9 +19,10 @@
         @paste="adjustHeight"
       ></textarea>
     </div>
-    <div id="preview" class="tab-body" v-show="preview">
+    <div id="preview" class="tab-body markdown-body" v-show="preview">
       <div id="preview"></div>
     </div>
+    <button v-on:click="send()" class="btn-primary">送信</button>
   </div>
 </template>
 

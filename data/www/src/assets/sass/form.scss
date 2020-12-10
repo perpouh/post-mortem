@@ -19,13 +19,26 @@ input[type="email"]{
 }
 
 .toggle_radio{
-  border: #000 1px solid;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
   border-radius: 4px;
   display: inline-flex;
+  overflow: hidden;
   input[type='radio']{
     display: none;
     &:checked + label{
-      background-color: rgba(0,0,0,.05)
+      background-color: rgba(0,0,0,.05);
+      &.keep{
+        background-color: #28a745;
+        color: white;
+      }
+      &.problem{
+        background-color: #cb2431;
+        color: white;
+      }
+      &.try{
+        background-color: #0366d6;
+        color: white;
+      }
     }
   }
   label{
@@ -34,7 +47,7 @@ input[type="email"]{
     line-height: 2em;
     height: 100%;
     &:not(:first-of-type){
-      border-left: #000 solid 1px;
+      border-left: rgba(0, 0, 0, 0.1) solid 1px;
     }
   }
 }

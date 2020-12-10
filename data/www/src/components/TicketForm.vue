@@ -4,16 +4,15 @@
       <div>
         <div class="toggle_radio">
           <input type="radio" id="keep" value="keep" v-model="ticket.opinion_type">
-          <label for="keep">keep</label>
+          <label for="keep" class="keep">keep</label>
           <input type="radio" id="problem" value="problem" v-model="ticket.opinion_type">
-          <label for="problem">Problem</label>
+          <label for="problem" class="problem">Problem</label>
           <input type="radio" id="try" value="try" v-model="ticket.opinion_type">
-          <label for="try">Try</label>
+          <label for="try" class="try">Try</label>
         </div>
         <button class="btn-primary">テンプレート</button>
       </div>
       <auto-scale-text-area v-model="ticket.body" :placeholder="placeholder"></auto-scale-text-area>
-      <button v-on:click="send()" class="btn-primary">送信</button>
     </form>
   </layout>
 </template>
