@@ -12,7 +12,7 @@
         </div>
         <button class="btn-primary">テンプレート</button>
       </div>
-      <auto-scale-text-area v-model="ticket.body" :placeholder="placeholder"></auto-scale-text-area>
+      <auto-scale-text-area @send="sendTicket" :placeholder="placeholder"></auto-scale-text-area>
     </form>
   </layout>
 </template>
@@ -44,7 +44,7 @@ export default{
         canCancel: false,
       });
 
-      this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
+      this.$http.post(`/projects/${this.$route.params.project_id}/tickets`)({ticket: this.ticket})
       .then(function(res){
         console.log(res)
         this.$toasted.success('チケットを作成しました', { 
@@ -67,6 +67,10 @@ export default{
         console.log(res)
         loader.hide()
       })
+    },
+    sendTicket(body) {
+      alert(body)
+      // TODO
     }
   }
 }

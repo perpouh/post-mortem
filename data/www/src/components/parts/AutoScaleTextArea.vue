@@ -17,6 +17,7 @@
         @change="adjustHeight"
         @keyup="adjustHeight"
         @paste="adjustHeight"
+        v-model="body"
       ></textarea>
     </div>
     <div id="preview" class="tab-body markdown-body" v-show="preview">
@@ -31,7 +32,8 @@ import TextareaMarkdown from "textarea-markdown";
 export default {
   data(){
     return {
-      tab: 'write'
+      tab: 'write',
+      body: ""
     }
   },
   props: ["cls", "placeholder"],
@@ -53,6 +55,9 @@ export default {
         textarea.style.height = textarea.scrollHeight + "px";
       });
     },
+    send(){
+      this.$emit('send', this.body)
+    }
   },
   mounted() {
     let textarea = document.querySelector("textarea");
