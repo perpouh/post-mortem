@@ -1,12 +1,10 @@
 <template>
   <div class="ticket">
     <div class="ticket-header">
-      <div class="title">プロジェクト名</div><!-- TODO: デザイン -->
       <div class="badge keep"></div>
     </div>
     <div class="ticket-body markdown-body" v-html="decorate(ticket.body)"></div>
     <div class="ticket-footer">
-      <div class="commented" v-if="false">0</div>
       <div class="liked" @click="like(ticket.id)">{{ticket.liked}}</div>
     </div>
   </div>

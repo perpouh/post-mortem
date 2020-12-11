@@ -1,0 +1,41 @@
+
+.comment{
+  border: solid 1px rgba(3,102,214,.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 60px;
+  &::before{
+    position: absolute;
+    top: 11px;
+    right: 100%;
+    left: -16px;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    border-width: 8px;
+    border-right-color: var(--color-auto-blue-2,#c0d3eb);
+  }
+  .comment-header{
+    background-color: #f1f8ff;
+    border-bottom: 1px solid rgba(3,102,214,.2);
+    line-height: 35px;
+    img{
+      width: 35px;
+      height: 35px;
+      border-radius: 20px;
+      background-color: red;
+      position: absolute;
+      margin-left: -60px;
+    }
+  }
+  .comment-body{
+    
+  }
+  .comment-footer{
+
+  }
+}

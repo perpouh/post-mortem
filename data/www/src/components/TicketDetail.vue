@@ -50,7 +50,7 @@ export default{
         comment: {
           body: body
         }
-      }).then(function(_){
+      }).then(function(res){
         this.$toasted.global.success()
       }.bind(this))
       .catch(function (error) {

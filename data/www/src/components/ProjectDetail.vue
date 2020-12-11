@@ -17,7 +17,7 @@
         <router-link :to="`/project/${$route.params.id}/ticket/new`" class="btn-primary">作成</router-link>
       </div>
       <ul>
-        <ticket v-for="ticket in tickets" v-bind:key="ticket.id" @click="gotoDetail(ticket.id)"></ticket>
+        <ticket-row v-for="ticket in tickets" v-bind:key="ticket.id" :ticket="ticket" :project="project"></ticket-row>
       </ul>
     </div>
   </layout>
@@ -25,12 +25,12 @@
 
 <script>
 import Layout from './Layout'
-import Ticket from './parts/Ticket'
+import TicketRow from './parts/TicketRow'
 export default {
   name: 'ProjectDetail',
   components: {
     Layout,
-    Ticket
+    TicketRow
   },
   data() {
     return {
