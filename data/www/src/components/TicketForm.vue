@@ -37,10 +37,9 @@ export default{
     AutoScaleTextArea
   },
   methods: {
-    send: function(){
+    sendTicket(body) {
       let loader = this.$loading.show();
       this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
-
       .then(function(res){
         this.$toasted.global.success()
       }.bind(this))
@@ -50,10 +49,6 @@ export default{
       .then(function(){
         loader.hide()
       })
-    },
-    sendTicket(body) {
-      alert(body)
-      // TODO
     }
   }
 }

@@ -1,4 +1,6 @@
 class Opinion < ApplicationRecord
+  belongs_to :user
+
   def ticket?
     keep? or problem? or try?
   end
