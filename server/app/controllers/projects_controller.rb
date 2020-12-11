@@ -9,9 +9,9 @@ class ProjectsController < AuthenticatedController
   end
 
   def create
-    Project.create(project_params)
+    @project = Project.create(project_params)
 
-    redirect_to projects_path
+    render json: {status: :ok, message: "プロジェクトを作成しました", created: @project.id}
   end
 
   def show

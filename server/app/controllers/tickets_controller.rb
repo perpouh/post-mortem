@@ -18,11 +18,13 @@ class TicketsController < ApplicationController
   def create
     #　TODO: 参画していないプロジェクトにはチケット作れない処理
     @project = Project.find(params[:project_id])
-    @project.tickets.create(ticket_params)
+    @ticket = @project.tickets.create!(ticket_params)
 
     extract_tags(ticket_params[:body]).each do |tag|
       Tag.find_or_create_by(body: tag)
     end
+
+    render json: {status: :ok, message: "チケットを作成しました", created: @ticket.id}
   end
 
   def edit

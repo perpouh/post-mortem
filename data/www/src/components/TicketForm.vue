@@ -38,33 +38,16 @@ export default{
   },
   methods: {
     send: function(){
-      let loader = this.$loading.show({
-        // Optional parameters
-        container: null,
-        canCancel: false,
-      });
+      let loader = this.$loading.show();
+      this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
 
-      this.$http.post(`/projects/${this.$route.params.project_id}/tickets`)({ticket: this.ticket})
       .then(function(res){
-        console.log(res)
-        this.$toasted.success('チケットを作成しました', { 
-          theme: "bubble", 
-          position: "top-center", 
-          duration : 3000
-        })
-        this.ticket.body = ""
-        this.ticket.opinion_type = 1
+        this.$toasted.global.success()
       }.bind(this))
       .catch(function (error) {
-        console.log(error)
-        this.$toasted.error('チケットの作成に失敗しました', { 
-          theme: "bubble", 
-          position: "top-center", 
-          duration : 3000
-        })
+        this.$toasted.global.error({message: error.data.message})
       }.bind(this))
-      .then(function(res){
-        console.log(res)
+      .then(function(){
         loader.hide()
       })
     },
