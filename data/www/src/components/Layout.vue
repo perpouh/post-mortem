@@ -7,7 +7,9 @@
       </select>
       <input type="search">
     </header>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <footer>
       ©2020 Perpouh.inc.
     </footer>
@@ -44,3 +46,10 @@ export default{
   }
 }
 </script>
+
+<style>
+main{
+  max-width: 1260px;
+  margin: 0 auto;
+}
+</style>

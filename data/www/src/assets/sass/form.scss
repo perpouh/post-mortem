@@ -1,0 +1,60 @@
+
+.field{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="email"]{
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 13px;
+  width: 100%;
+}
+
+.btn-primary{
+  @include button()
+}
+
+.toggle_radio{
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  border-radius: 4px;
+  display: inline-flex;
+  overflow: hidden;
+  input[type='radio']{
+    display: none;
+    &:checked + label{
+      background-color: rgba(0,0,0,.05);
+      &.keep{
+        background-color: #28a745;
+        color: white;
+      }
+      &.problem{
+        background-color: #cb2431;
+        color: white;
+      }
+      &.try{
+        background-color: #0366d6;
+        color: white;
+      }
+    }
+  }
+  label{
+    padding: 0px 12px;
+    box-sizing: border-box;
+    line-height: 2em;
+    height: 100%;
+    &:not(:first-of-type){
+      border-left: rgba(0, 0, 0, 0.1) solid 1px;
+    }
+  }
+}
+
+textarea{
+  width: 100%;
+  border: 1px solid;
+  padding: 12px;
+  border-radius: 4px;
+}
