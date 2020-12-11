@@ -14,6 +14,22 @@ Vue.use(Loading)
 Vue.prototype.$http = Http
 Vue.config.productionTip = false
 
+Vue.toasted.register('error', 'エラーが発生しました。', {
+  type : 'error',
+  // icon : 'error_outline',
+  theme: "bubble", 
+  position: "top-center", 
+  duration : 3000
+})
+
+Vue.toasted.register('success', '保存しました。', {
+  type : 'success',
+  // icon : 'check_outline',
+  theme: "bubble", 
+  position: "top-center", 
+  duration : 3000
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

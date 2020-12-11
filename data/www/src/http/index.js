@@ -8,42 +8,6 @@ const axios = Axios.create({
   responseType: 'json'
 })
 export default {
-  get: function (that, url, params) {
-    let loader = that.$loading.show({
-      container: null,
-      canCancel: false,
-    });
-    axios.get(url, { params })
-      .then(function (res) {
-        console.log(res)
-        loader.hide()
-      })
-  },
-  post: function (that, url, data) {
-    let loader = that.$loading.show({
-      container: null,
-      canCancel: false,
-    });
-    axios.post(url, data)
-      .then(function (res) {
-        console.log(res)
-        that.$toasted.success(res.message, {
-          theme: "bubble",
-          position: "top-center",
-          duration: 3000
-        })
-      }.bind(that))
-      .catch(function (error) {
-        console.log(error.response.data)
-        that.$toasted.error(error.message, {
-          theme: "bubble",
-          position: "top-center",
-          duration: 3000
-        })
-      }.bind(that))
-      .then(function (res) {
-        console.log(res)
-        loader.hide()
-      })
-  }
+  get: url => params => axios.get(url, { params }),
+  post: url => data => axios.post(url, data)
 }

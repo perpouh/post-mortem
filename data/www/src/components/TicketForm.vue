@@ -31,7 +31,17 @@ export default{
   },
   methods: {
     send: function(){
-      this.$http.post(this, `/projects/${this.$route.params.id}/tickets`, {ticket: this.ticket})
+      let loader = this.$loading.show();
+      this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
+      .then(function(res){
+        this.$toasted.global.success()
+      }.bind(this))
+      .catch(function (error) {
+        this.$toasted.global.error({message: error.data.message})
+      }.bind(this))
+      .then(function(){
+        loader.hide()
+      })
     }
   }
 }
