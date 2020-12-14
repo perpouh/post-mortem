@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistedstate from "vuex-persistedstate";
-import auth from './auth';
+// import auth from './auth';
+import mutations from './mutations';
+import actions from './actions';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {
-    auth: auth,
+  state: {
+    user: null,
+    // projects: [] // TODO: サイドバーとかで使うなら考える
   },
   plugins: [
     VuexPersistedstate({
@@ -21,11 +24,6 @@ export default new Vuex.Store({
       storage: window.localStorage
     }),
   ],
-  actions: {
-    resetAll({commit, state}){
-      Object.keys(state).forEach(key => {
-        commit(key + "/reset");
-      });
-    }
-  }
+  actions: actions,
+  mutations: mutations
 })
