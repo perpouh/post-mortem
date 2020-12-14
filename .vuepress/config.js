@@ -28,6 +28,7 @@ module.exports = {
       {
         title: 'Rails',
         children: [
+          ["rails/rack-corsを導入する", "rack-corsを導入する"]
         ]
       },
     ],

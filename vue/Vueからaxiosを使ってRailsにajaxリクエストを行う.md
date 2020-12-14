@@ -70,7 +70,7 @@ fetchData () {
 
 ## CORS対策
 
-→[rack-corsを導入する](rails/rack-corsを導入する)
+→[rack-corsを導入する](/rails/rack-corsを導入する)
 
 ## baseURLを環境変数から読み込む
 
