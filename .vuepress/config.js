@@ -28,7 +28,8 @@ module.exports = {
       {
         title: 'Rails',
         children: [
-          ["rails/rack-corsを導入する", "rack-corsを導入する"]
+          ["rails/rack-corsを導入する", "rack-corsを導入する"],
+          ["rails/devise_token_auth導入と設定", "devise_token_auth導入と設定"]
         ]
       },
     ],
