@@ -2,13 +2,13 @@
   <layout>
     <input type="email" v-model="email" placeholder="hogehoge@email.example.com">
     <input type="password" v-model="password" placeholder="passwd">
-    <button @click="signin">Sign in</button>
+    <button @click="signin" class="btn-primary">Sign in</button>
   </layout>
 </template>
 
 <script>
 import Layout from "./Layout";
-import { mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -20,7 +20,7 @@ export default {
     Layout,
   },
   methods: {
-    ...mapActions([
+    ...mapMutations('auth',[
       'login'
     ]),
     signin() {
