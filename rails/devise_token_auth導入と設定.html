@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>devisetokenauth導入と設定</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" type="image/png" href="/post-mortem/assets/img/favicon.ico">
+    <meta name="description" content="活動拠点です。">
+    <meta name="author" content="perpouh">
+    <link rel="preload" href="/post-mortem/assets/css/0.styles.33869474.css" as="style"><link rel="preload" href="/post-mortem/assets/js/app.39592514.js" as="script"><link rel="preload" href="/post-mortem/assets/js/2.33a68372.js" as="script"><link rel="preload" href="/post-mortem/assets/js/7.3feee944.js" as="script"><link rel="prefetch" href="/post-mortem/assets/js/3.f2420faf.js"><link rel="prefetch" href="/post-mortem/assets/js/4.d9ad600e.js"><link rel="prefetch" href="/post-mortem/assets/js/5.70d3f8c0.js"><link rel="prefetch" href="/post-mortem/assets/js/6.7eb08417.js"><link rel="prefetch" href="/post-mortem/assets/js/8.a5de1e2c.js"><link rel="prefetch" href="/post-mortem/assets/js/9.3588179d.js">
+    <link rel="stylesheet" href="/post-mortem/assets/css/0.styles.33869474.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/post-mortem/" class="home-link router-link-active"><img src="/post-mortem/assets/img/logo.png" alt="" class="logo"> <!----></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/perpouh/post-mortem" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/perpouh/post-mortem" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>インフラ</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Rails</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/post-mortem/rails/rack-corsを導入する.html" class="sidebar-link">rack-corsを導入する</a></li><li><a href="/post-mortem/rails/devise_token_auth導入と設定.html" class="active sidebar-link">devise_token_auth導入と設定</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/post-mortem/rails/devise_token_auth導入と設定.html#rails-corsの設定を追加" class="sidebar-link">rails_corsの設定を追加</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="devise-token-auth導入と設定"><a href="#devise-token-auth導入と設定" class="header-anchor">#</a> devise_token_auth導入と設定</h1> <p>以下の記事を参考に設定していきます。<br> <a href="https://qiita.com/Masahiro_T/items/6bc49a625b437a7c2f45" target="_blank" rel="noopener noreferrer">[Rails] devise token auth を使う - Qiita<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ol><li>Gemfileに <code>devise_token_auth</code> を追加</li> <li>bundle install</li> <li>rails g devise_token_auth:install User auth</li></ol> <blockquote><p>次に、インストール時に作成されたdb/migrate/~_devise_token_auth_create_users.rbにTrackableに関するカラムを追記します。
+これがないと、サインイン時にUndefined method current_sign_in_at（current_sign_in_atはTrackableに関するカラム）とエラーが出ます。</p></blockquote> <div class="language-rb extra-class"><pre class="language-rb"><code>  <span class="token comment"># ここを追記 --------------------------------------------</span>
+  <span class="token comment">## Trackable</span>
+  t<span class="token punctuation">.</span>integer  <span class="token symbol">:sign_in_count</span><span class="token punctuation">,</span> default<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> null<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  t<span class="token punctuation">.</span>datetime <span class="token symbol">:current_sign_in_at</span>
+  t<span class="token punctuation">.</span>datetime <span class="token symbol">:last_sign_in_at</span>
+  t<span class="token punctuation">.</span>string   <span class="token symbol">:current_sign_in_ip</span>
+  t<span class="token punctuation">.</span>string   <span class="token symbol">:last_sign_in_ip</span>
+  <span class="token comment"># -----------------------------------------------------</span>
+</code></pre></div><p>devise_token_authの設定(config/initializers/devise_token_auth.rb)は私はほぼそのままです。<br> <code>config.change_headers_on_each_request</code> をアンコメントしてfalseに変更し、 <code>config.default_confirm_success_url</code> を追記しました。curlで動かしたときにwarningが出た（んだった気がする）ため。</p> <ol start="4"><li>application_controllerに以下を記述<br> <code>include DeviseTokenAuth::Concerns::SetUserByToken</code></li> <li>user.rbに以下を記述<br> <code>include DeviseTokenAuth::Concerns::User</code></li></ol> <p>ここまででcurlでの動作確認ができました。作業コミットはここ:<a href="https://github.com/perpouh/post-mortem/pull/3/commits/09cbeab4a3b0cdcf06a26942e33e946db06b89ec" target="_blank" rel="noopener noreferrer">09cbeab4a3b0cdcf06a26942e33e946db06b89ec<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="rails-corsの設定を追加"><a href="#rails-corsの設定を追加" class="header-anchor">#</a> rails_corsの設定を追加</h2> <p>これでよしと思ったらVueからajaxでつないだときにヘッダが取得できませんでした。curlでつないだときには以下のように出力されていたのですが、この内のほとんどが見えない状態でした。</p> <div class="language- extra-class"><pre class="language-text"><code>% curl localhost:3030/auth/sign_in -X POST -d '{&quot;email&quot;:&quot;mail@example.com&quot;, &quot;password&quot;:&quot;password&quot;}' -H &quot;content-type:application/json&quot; -i
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Type: application/json; charset=utf-8
+access-token: MpVFdSiHYkXOPJ2cd53iMw ←これと
+token-type: Bearer
+client: ZxKHfcwDceyBV0oL_2NNHQ ←これと
+expiry: 1609136308
+uid: mail@example.com ←これが必要
+ETag: W/&quot;e22bae0c2e6294167626665a9858ea03&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 3a87fc8f-7b87-4b07-8a90-cd5e7194ccdf
+X-Runtime: 0.465371
+Vary: Origin
+Transfer-Encoding: chunked
+
+{&quot;data&quot;:{&quot;id&quot;:1,&quot;email&quot;:&quot;mail@example.com&quot;,&quot;provider&quot;:&quot;email&quot;,&quot;uid&quot;:&quot;mail@example.com&quot;,&quot;allow_password_change&quot;:false,&quot;username&quot;:null,&quot;nickname&quot;:null,&quot;image&quot;:null,&quot;ticket_count&quot;:0,&quot;comment_count&quot;:0}}
+</code></pre></div><p>ざっと検索してみたところ、以下の記事がヒットしました。</p> <p><a href="https://note.kiriukun.com/entry/20200303-axios-response-header-could-not-get" target="_blank" rel="noopener noreferrer">Axiosでレスポンスヘッダが取得できなかった (CORSなAPI) - キリウ君が読まないノート<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <blockquote><p>どうやらCORSなWebAPIの場合、ブラウザ側で扱えるレスポンスヘッダの名称を、Access-Control-Expose-Headers ヘッダで明示的に指定する必要があるようです。
+Cache-Control とか Content-Type のような一般的なレスポンスヘッダならば不要みたいですが、今回は自分で定義したレスポンスヘッダなので必要でした。</p></blockquote> <p>CORSについてはrails_corsを導入しましたので、検索→<a href="https://qiita.com/owlgae/items/a6e5ec7f0cdf89365e8c" target="_blank" rel="noopener noreferrer">RailsでCORSのAccess-Control-Expose-Headersを設定する - Qiita<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>がヒット、以下のように書き換えたところ、無事に必要な情報を取得することができました。</p> <div class="language-diff extra-class"><pre class="language-diff"><code>Rails.application.config.middleware.insert_before 0, Rack::Cors do
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> allow do
+</span><span class="token prefix unchanged"> </span><span class="token line">   origins ENV['CLIENT_HOST']
+</span><span class="token prefix unchanged"> </span><span class="token line">   resource &quot;*&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     headers: :any,
+</span><span class="token prefix unchanged"> </span><span class="token line">     methods: [:get, :post, :put, :patch, :delete, :options, :head],
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     expose: ['access-token', 'client', 'uid']
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> end
+</span></span>end
+</code></pre></div><p>これでVueからの疎通を確認できました。<br>
+全体PRはこれ:<a href="https://github.com/perpouh/post-mortem/pull/3" target="_blank" rel="noopener noreferrer">Feature/vuex #3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/post-mortem/rails/rack-corsを導入する.html" class="prev">
+        rack-corsを導入する
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/post-mortem/assets/js/app.39592514.js" defer></script><script src="/post-mortem/assets/js/2.33a68372.js" defer></script><script src="/post-mortem/assets/js/7.3feee944.js" defer></script>
+  </body>
+</html>
