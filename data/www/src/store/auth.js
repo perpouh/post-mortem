@@ -14,9 +14,9 @@ export default {
       Object.assign(state, initialState())
     },
     login: function(state, data){
-      state.access_token = data.access_token;
-      state.client = data.client;
-      state.uid = data.uid;
+      state.access_token = data['access-token'];
+      state.client = data['client'];
+      state.uid = data['uid'];
     },
     logout: function(state){
       state.access_token = null;
@@ -32,5 +32,13 @@ export default {
       state.access_token = data.access_token;
     }
   },
-
+  getters: {
+    show: function(state){
+      return {
+        access_token: state.access_token,
+        client: state.client,
+        uid: state.uid
+      }
+    }
+  }
 }

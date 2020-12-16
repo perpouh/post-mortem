@@ -11,11 +11,6 @@ export default new Vuex.Store({
   },
   plugins: [
     VuexPersistedstate({
-        key: 'PostMortem',
-        paths: [],
-        storage: window.sessionStorage
-    }),
-    VuexPersistedstate({
       key: 'PostMortem',
       paths: ['auth'],
       storage: window.localStorage

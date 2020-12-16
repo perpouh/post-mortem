@@ -25,12 +25,13 @@ export default {
     ]),
     signin() {
       let loader = this.$loading.show();
-      this.$http.post(`/auth/sign_in`)({email: this.email, password: this.password})
+      this.$http.post(`/auth/sign_in`, {email: this.email, password: this.password})
       .then(function(res){
         this.login(res.headers)
         this.$toasted.global.success()
       }.bind(this))
       .catch(function (error) {
+        console.log(error.data)
         this.$toasted.global.error()
       }.bind(this))
       .then(function(){
