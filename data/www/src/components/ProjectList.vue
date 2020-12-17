@@ -1,7 +1,7 @@
 <template>
   <layout>
     <div>
-      <h2>参加プロジェクト</h2>
+      <h2>プロジェクト</h2>
       <project-list :projects="projects"></project-list>
     </div>
   </layout>
@@ -28,7 +28,7 @@ export default{
   },
   methods: {
     fetchData () {
-      this.$http.get("/my/projects")
+      this.$http.get("/projects")
       .then(function(res){
         this.projects = res.data
       }.bind(this))

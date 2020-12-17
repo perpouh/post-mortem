@@ -29,6 +29,7 @@ export default {
       .then(function(res){
         this.login(res.headers)
         this.$toasted.global.success()
+        this.$router.push('/')
       }.bind(this))
       .catch(function (error) {
         this.$toasted.global.error()

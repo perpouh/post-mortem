@@ -16,24 +16,8 @@
 <script>
 export default{
   name: 'ProjectList',
-  data(){
-    return {
-      projects : []
-    }
-  },
-  created(){
-    this.fetchData()
-  },
-  watch: {
-    '$route': 'fetchData'
-  },
+  props:[ 'projects' ],
   methods: {
-    fetchData () {
-      this.$http.get("/projects")
-      .then(function(res){
-        this.projects = res.data
-      }.bind(this))
-    },
     gotoProjectDetail(id){
       this.$router.push(`/project/${id}`)
     }

@@ -10,4 +10,8 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  namespace :my do
+    get "projects", to: "projects#index", defaults: {format: :json}
+  end
 end
