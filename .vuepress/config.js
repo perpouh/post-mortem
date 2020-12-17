@@ -22,7 +22,8 @@ module.exports = {
       {
         title: 'Vue',
         children: [
-          ["vue/Vueからaxiosを使ってRailsにajaxリクエストを行う", "Vueからaxiosを使ってRailsにajaxリクエストを行う"]
+          ["vue/Vueからaxiosを使ってRailsにajaxリクエストを行う", "Vueからaxiosを使ってRailsにajaxリクエストを行う"],
+          ["vue/axiosとVuexを使ったログインロジックの作成", "axiosとVuexを使ったログインロジックの作成"]
         ]
       },
       {
