@@ -4,14 +4,34 @@
   margin: 0 auto;
 }
 
-input[type="email"]{
+dl{
+  dt{
+    line-height: $line-base;
+    small{
+      font-size: 80%;
+      font-weight: normal;
+      color: #444;
+      margin-left: 1em;
+    }
+  }
+  dd{
+    line-height: $line-base;
+    margin-bottom: $line-base * .5;
+  }
+}
+
+input[type="text"], input[type="url"], input[type="email"], input[type="password"]{
   background-color: #f1f1f1;
   border: 1px solid #f1f1f1;
   border-radius: 2px;
   box-sizing: border-box;
-  font-size: 14px;
-  padding: 13px;
   width: 100%;
+  height: $line-base * 1.5;
+  font-size: 1em;
+  padding: 0px 1em;
+  &:not(:first-of-type){
+    margin-top: $line-base * .5;
+  }
 }
 
 .btn-primary{
