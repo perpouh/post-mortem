@@ -31,7 +31,6 @@ export default {
         this.$toasted.global.success()
       }.bind(this))
       .catch(function (error) {
-        console.log(error.data)
         this.$toasted.global.error()
       }.bind(this))
       .then(function(){
