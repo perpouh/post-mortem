@@ -1,12 +1,19 @@
 <template>
   <layout>
-    <ul>
-      <li>新着</li>
-      <li>アクティブ</li>
-      <li>メンション</li>
-    </ul>
-    <div class="tickets">
-      <ticket v-for="ticket in tickets" :key="ticket.id"></ticket>
+    <div>
+      <h2>参加プロジェクト</h2>
+      <project-list></project-list>
     </div>
   </layout>
 </template>
+
+<script>
+import Layout from './Layout'
+import ProjectList from './parts/ProjectList'
+export default{
+  components: {
+    Layout,
+    ProjectList
+  }
+}
+</script>

@@ -34,7 +34,7 @@ export default{
   },
   methods: {
     fetchData () {
-      this.$http.get("/projects")({query: "hogehoge"})
+      this.$http.get("/projects")
       .then(function(res){
         this.projects = res.data
       }.bind(this))

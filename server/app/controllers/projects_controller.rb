@@ -1,7 +1,7 @@
 class ProjectsController < AuthenticatedController
 
   def index
-    @projects = Project.all
+    @projects = Project.joining(current_user.id)
   end
 
   def new
