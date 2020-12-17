@@ -9,7 +9,7 @@ class ProjectsController < AuthenticatedController
   end
 
   def create
-    @project = Project.create(project_params)
+    @project = Project.create!(project_params.merge({manager_id: current_user.id}))
 
     render json: {status: :ok, message: "プロジェクトを作成しました", created: @project.id}
   end
