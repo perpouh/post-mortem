@@ -38,6 +38,7 @@ export default{
       this.$http.post(`/projects`, {project: this.project})
       .then(function(res){
         this.$toasted.global.success()
+        this.$router.push(`/project/${res.data.created}`)
       }.bind(this))
       .catch(function (error) {
         this.$toasted.global.error({message: error.data.message})
