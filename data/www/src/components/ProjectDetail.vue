@@ -6,6 +6,8 @@
     </ul>
     <div id="summary" class="tab-body" v-show="summary">
       <!-- <badge v-for="tag in tags" v-bind:key="tag.id"></badge> -->
+      <h2>プロジェクトマネージャ</h2>
+      {{manager.nickname}}
       <h2>メンバー一覧</h2>
       <ul>
         <li v-for="member in members" v-bind:key="member.id">{{member.name}}</li>
@@ -37,7 +39,8 @@ export default {
       project: {},
       tickets: [],
       members: [],
-      tab:"summary"
+      manager: {},
+      tab:"ticket"
     }
   },
   created(){
@@ -57,11 +60,12 @@ export default {
   methods: {
     fetchData () {
       let projId = this.$route.params.id
-      this.$http.get(`/projects/${projId}`)()
+      this.$http.get(`/projects/${projId}`)
       .then(function(res){
         this.project = res.data.project
         this.tickets = res.data.project.tickets
         this.members = res.data.project.members
+        this.manager = res.data.project.manager
       }.bind(this))
     },
     gotoDetail(ticketID){
