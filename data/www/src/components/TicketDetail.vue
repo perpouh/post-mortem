@@ -37,7 +37,7 @@ export default{
   },
   methods: {
     fetchData () {
-      this.$http.get(`/projects/${this.$route.params.project_id}/tickets/${this.$route.params.id}`)()
+      this.$http.get(`/projects/${this.$route.params.project_id}/tickets/${this.$route.params.id}`)
       .then(function(res){
         console.log(res)
         this.ticket = res.data.ticket
@@ -46,7 +46,7 @@ export default{
     },
     sendComment(body) {
       let loader = this.$loading.show();
-      this.$http.post(`/projects/${this.$route.params.project_id}/tickets/${this.$route.params.id}/comments`)({
+      this.$http.post(`/projects/${this.$route.params.project_id}/tickets/${this.$route.params.id}/comments`, {
         comment: {
           body: body
         }

@@ -38,8 +38,9 @@ export default{
   },
   methods: {
     sendTicket(body) {
+      this.ticket.body = body;
       let loader = this.$loading.show();
-      this.$http.post(`/projects/${this.$route.params.id}/tickets`)({ticket: this.ticket})
+      this.$http.post(`/projects/${this.$route.params.project_id}/tickets`, {ticket: this.ticket})
       .then(function(res){
         this.$toasted.global.success()
       }.bind(this))
