@@ -9,9 +9,9 @@ class Opinion < ApplicationRecord
   scope :tickets_only, -> { where(opinion_type: [1,2,3]) }
 
   enum opinion_type: {
-    keep: 1,
+    keep_on: 1,
     problem: 2,
-    try: 3,
+    try_to: 3,
     comment: 4,
   }
 end

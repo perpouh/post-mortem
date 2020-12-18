@@ -5,7 +5,7 @@
       <select v-model="selectedProject">
         <option v-for="project in projects" v-bind:key="project.id" :value="project.id">{{project.name}}</option>
       </select>
-      <input type="search">
+      <input type="search" v-model="searchWord" v-on:keydown.enter="submit">
     </header>
     <main>
       <slot />
@@ -22,7 +22,8 @@ export default{
   data(){
     return {
       projects : [],
-      selectedProject: ""
+      selectedProject: "",
+      searchWord: ""
     }
   },
   created(){
@@ -34,14 +35,20 @@ export default{
   },
   methods: {
     fetchData () {
-      this.$http.get("/projects")
-      .then(function(res){
-        this.projects = res.data
-      }.bind(this))
+      // this.$http.get("/projects")
+      // .then(function(res){
+      //   this.projects = res.data
+      // }.bind(this))
     },
     gotoProjectDetail () {
       console.log(this.selectedProject)
       this.$router.push({path: `/project/${this.selectedProject}`})
+    },
+    submit(){
+      // 日本語入力中のEnterは無視する
+      if (event.keyCode !== 13) return
+      
+      this.$router.push(`/search?q=${encodeURI(this.searchWord)}`)
     }
   }
 }
