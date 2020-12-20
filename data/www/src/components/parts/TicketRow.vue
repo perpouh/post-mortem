@@ -1,9 +1,6 @@
 <template>
   <li class="ticket" @click="gotoDetail">
-    <div class="ticket-header">
-      <div class="title">プロジェクト名</div><!-- TODO: デザイン -->
-      <div class="badge keep"></div>
-    </div>
+    <div class="badge keep"></div>
     <div class="ticket-body markdown-body">{{ticket.body}}</div>
     <div class="ticket-footer">
       <div class="commented" v-if="false">0</div>

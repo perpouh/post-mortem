@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Layout from './Layout';
+import Layout from './layouts/Layout';
 import AutoScaleTextArea from './parts/AutoScaleTextArea.vue';
 import Ticket from './parts/Ticket';
 import Comment from './parts/Comment';

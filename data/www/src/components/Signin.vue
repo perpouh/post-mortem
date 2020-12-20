@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Layout from "./Layout";
+import Layout from "./layouts/NoSignLayout";
 import { mapMutations } from 'vuex'
 export default {
   data() {

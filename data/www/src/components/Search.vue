@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from './layouts/Layout'
 import OpinionList from './parts/OpinionList.vue'
 export default{
   data(){

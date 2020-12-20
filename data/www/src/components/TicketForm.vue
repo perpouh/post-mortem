@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from './layouts/Layout'
 import AutoScaleTextArea from './parts/AutoScaleTextArea'
 export default{
   name: 'TicketForm',

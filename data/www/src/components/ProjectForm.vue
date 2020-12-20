@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from './layouts/Layout'
 export default{
   components: {Layout},
   data(){

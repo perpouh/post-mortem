@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from './layouts/Layout'
 import TicketRow from './parts/TicketRow'
 export default {
   name: 'ProjectDetail',

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from './layouts/Layout'
 import ProjectList from './parts/ProjectList'
 export default{
   data(){
