@@ -16,7 +16,6 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y%m%d')"
       - name: Create new Branch
-        uses: actions/checkout@v2
         env:
           TZ: "Asia/Tokyo"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
