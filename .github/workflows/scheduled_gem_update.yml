@@ -37,8 +37,7 @@ jobs:
           bundle update
       - name: commit changes
         run: |
-          pwd
-          ls
+          cd server
           DATE=`date +"%Y%m%d"`
           git add Gemfile.lock
           git commit -m "bundle update $DATE"
