@@ -27,6 +27,7 @@ jobs:
           git checkout -b "$BRANCH_NAME"
       - name: bundle update
         run: |
+          pwd
           bundle update
       - name: install hub
         uses: geertvdc/setup-hub@v1.0.0
