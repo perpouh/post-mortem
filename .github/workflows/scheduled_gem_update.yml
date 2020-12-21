@@ -1,7 +1,10 @@
 name: scheduled_gem_update
 
-on: [ workflow_dispatch ]
-  #schedule:
+on: 
+  push:
+    branches:
+    - feature/github_ci
+  # schedule:
   #  - cron: 0 4 * * 6
 
 jobs:
