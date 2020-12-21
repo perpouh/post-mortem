@@ -37,6 +37,8 @@ jobs:
           bundle update
       - name: commit changes
         run: |
+          git config user.name perpouh
+          git config user.email perpouh@gmail.com
           cd server
           DATE=`date +"%Y%m%d"`
           git add Gemfile.lock
