@@ -25,9 +25,14 @@ jobs:
           DATE=`date +"%Y%m%d"`
           BRANCH_NAME="feature/gem-upgrade_$DATE"
           git checkout -b "$BRANCH_NAME"
+      - name: Set up Ruby 2.6
+        # actions/checkoutリポジトリのaction.ymlを利用する
+        uses: actions/setup-ruby@v1 # https://github.com/actions/setup-ruby/blob/master/action.yml
+        with:
+          ruby-version: 2.6.x
       - name: bundle update
         run: |
-          pwd
+          gem install bundler
           bundle update
       - name: install hub
         uses: geertvdc/setup-hub@v1.0.0
