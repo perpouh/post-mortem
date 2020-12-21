@@ -33,7 +33,7 @@ jobs:
       - name: bundle update
         run: |
           gem install bundler
-          ls
+          cd server
           bundle update
       - name: install hub
         uses: geertvdc/setup-hub@v1.0.0
