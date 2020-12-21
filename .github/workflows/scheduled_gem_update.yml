@@ -35,8 +35,6 @@ jobs:
           gem install bundler
           cd server
           bundle update
-      - name: install hub
-        uses: geertvdc/setup-hub@v1.0.0
       - name: create PR
         env:
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
