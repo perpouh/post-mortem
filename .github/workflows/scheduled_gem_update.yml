@@ -1,0 +1,23 @@
+name: scheduled_gem_update
+
+on:
+  schedule:
+    - cron: 0 4 * * 6
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout dev
+       uses: actions/checkout@v2
+       with:
+        ref: master
+    # https://stackoverflow.com/a/60942437
+     - name: Get current date
+       id: date
+       run: echo "::set-output name=date::$(date +'%Y%m%d')"
+     - name: create branch
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       run: |
+         git checkout -b feature/gem-upgrade_${{ steps.date.outputs.date }}
