@@ -1,7 +1,6 @@
 name: scheduled_gem_update
 
-on:
-  workflow_dispatch:
+on: [ workflow_dispatch ]
   #schedule:
   #  - cron: 0 4 * * 6
 
