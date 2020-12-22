@@ -10,6 +10,9 @@ name: Ruby
 on:
   pull_request:
     branches: [ master ]
+  push:
+    branches:
+      - feature/github_ci_server_unit_test
 
 jobs:
   test:
