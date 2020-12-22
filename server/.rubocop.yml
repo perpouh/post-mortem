@@ -65,6 +65,12 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'spec/**/*' # 一時的に
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
   # Cop names are displayed in offense messages by default. Change behavior
@@ -1342,7 +1348,7 @@ Layout/SpaceInsideStringInterpolation:
 Layout/TrailingEmptyLines:
   Description: 'Checks trailing blank lines and final newline.'
   StyleGuide: '#newline-eof'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   EnforcedStyle: final_newline
@@ -2174,7 +2180,6 @@ Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
   CountAsOne: []
-  ExcludedMethods: [] # deprecated, retained for backwards compatibility
   IgnoredMethods:
     # By default, exclude the `#refine` method, as it tends to have larger
     # associated blocks.
@@ -2220,7 +2225,6 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 10
   CountAsOne: []
-  ExcludedMethods: [] # deprecated, retained for backwards compatibility
   IgnoredMethods: []
 
 Metrics/ModuleLength:
@@ -2456,6 +2460,7 @@ Naming/MethodParameterName:
     - os
     - pp
     - to
+    - e
   # Forbidden names that will register an offense
   ForbiddenNames: []
 
@@ -2644,7 +2649,7 @@ Style/ArrayJoin:
 Style/AsciiComments:
   Description: 'Use only ascii symbols in comments.'
   StyleGuide: '#english-comments'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.52'
   AllowedChars: []
@@ -3290,7 +3295,7 @@ Style/FrozenStringLiteralComment:
   Enabled: true
   VersionAdded: '0.36'
   VersionChanged: '0.79'
-  EnforcedStyle: always
+  EnforcedStyle: never
   SupportedStyles:
     # `always` will always add the frozen string literal comment to a file
     # regardless of the Ruby version or if `freeze` or `<<` are called on a
