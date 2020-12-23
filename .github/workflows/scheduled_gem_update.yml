@@ -1,9 +1,8 @@
 name: scheduled_gem_update
 
-on:
-  push:
-    branches:
-    - feature/github_ci_scheduled
+on: 
+  schedule:
+   - cron: 0 4 * * 6
 
 jobs:
   bundle_update:
