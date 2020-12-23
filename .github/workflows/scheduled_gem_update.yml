@@ -1,8 +1,9 @@
 name: scheduled_gem_update
 
-on: 
-  schedule:
-   - cron: 0 4 * * 6
+on:
+  push:
+    branches:
+    - feature/github_ci_scheduled
 
 jobs:
   bundle_update:
@@ -10,10 +11,6 @@ jobs:
     steps:
       - name: checkout dev
         uses: actions/checkout@v2
-      # https://stackoverflow.com/a/60942437
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d')"
       - name: Create new Branch
         env:
           TZ: "Asia/Tokyo"
