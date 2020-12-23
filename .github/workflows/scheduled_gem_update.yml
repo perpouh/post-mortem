@@ -10,10 +10,6 @@ jobs:
     steps:
       - name: checkout dev
         uses: actions/checkout@v2
-      # https://stackoverflow.com/a/60942437
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d')"
       - name: Create new Branch
         env:
           TZ: "Asia/Tokyo"
