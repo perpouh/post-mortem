@@ -14,16 +14,71 @@ RSpec.describe TicketsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-  describe 'GET #new' do
+  describe 'GET #create' do
+    it 'returns http unauthorized' do
+      # 未ログイン
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      post :create, params: params
+      expect(response).to have_http_status(:unauthorized)
+    end
     it 'returns http success' do
-      get :new
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      post :create, params: params
       expect(response).to have_http_status(:success)
     end
+    it 'returns http forbidden' do
+      # 参加していないプロジェクトに対してチケットを作成することはできない
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      post :create, params: params
+      expect(response).to have_http_status(:forbidden)
+    end
+    it 'returns http unprocessable_entity' do
+      # バリデーションエラー
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      post :create, params: params
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
   end
-  describe 'GET #edit' do
+  describe 'GET #update' do
     it 'returns http success' do
-      get :edit
+      patch :update
       expect(response).to have_http_status(:success)
+    end
+    it 'returns http forbidden' do
+      # チケット登録者以外は編集できない
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      patch :update, params: params
+      expect(response).to have_http_status(:forbidden)
+    end
+    it 'returns http unprocessable_entity' do
+      # バリデーションエラー
+      params = {
+        ticket: {
+          body: "テスト"
+        }
+      }
+      patch :update, params: params
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 end
