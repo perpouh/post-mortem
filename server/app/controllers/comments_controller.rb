@@ -1,5 +1,5 @@
 # コメント操作
-class CommentsController < ApplicationController
+class CommentsController < AuthenticatedController
   # コメントはプロジェクトに参加して無くても可能
   # コメントを付けたチケットのウォッチとかやるかは未定
   def create

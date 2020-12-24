@@ -1,5 +1,5 @@
 # Backlogから情報を吸い出してメンバー一覧を登録したりする
-class MembersController < ApplicationController
+class MembersController < AuthenticatedController
   def create
     user = User.find_by(email: params[:email])
     if user.present?

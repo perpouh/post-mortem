@@ -1,5 +1,5 @@
 # チケットのCRUD
-class TicketsController < ApplicationController
+class TicketsController < AuthenticatedController
   include TagExtractor
 
   def index
@@ -35,11 +35,12 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    @ticket.update(ticket_params)
+    @ticket.update!(ticket_params)
 
     extract_tags(ticket_params[:body]).each do |tag|
       Tag.find_or_create_by(body: tag)
     end
+    render json: { status: :ok, message: 'チケットを更新しました', created: @ticket.id }
   end
 
   private

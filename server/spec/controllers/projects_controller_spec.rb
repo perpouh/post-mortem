@@ -3,6 +3,7 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe ProjectsController, type: :request do
   let(:user) { create(:user) }
+  let(:project) { create(:project) }
   @auth_tokens = {}
   before do
     user.confirm
@@ -16,25 +17,25 @@ RSpec.describe ProjectsController, type: :request do
   end
   describe 'GET #show' do
     it 'returns http success' do
-      get project_path({id: 1}), headers: @auth_tokens
+      get project_path(project), headers: @auth_tokens
       expect(response).to have_http_status(:success)
     end
   end
   describe 'POST #create' do
     it 'returns http success' do
-      post projects_path, headers: @auth_tokens
+      post projects_path, headers: @auth_tokens, params: { project: attributes_for(:project) }
       expect(response).to have_http_status(:success)
     end
   end
   describe 'PATCH #update' do
     it 'returns http success' do
-      patch project_path, params: {id: 1}, headers: @auth_tokens
+      patch project_path(project), params: { project: { name: 'タイトル更新' } }, headers: @auth_tokens
       expect(response).to have_http_status(:success)
     end
   end
   describe 'DELETE #destroy' do
     it 'returns http success' do
-      delete project_path, params: {id: 1}, headers: @auth_tokens
+      delete project_path(project), headers: @auth_tokens
       expect(response).to have_http_status(:success)
     end
   end
