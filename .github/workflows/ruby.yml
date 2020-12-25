@@ -45,6 +45,7 @@ jobs:
         DB_DATABASE: post-mortem_test
         CLIENT_HOST: www.example.com
       run: |
+        mysql --version
         cd server
         bundle exec rails db:create
         bundle exec rails db:migrate
