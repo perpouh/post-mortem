@@ -23,10 +23,10 @@ jobs:
       db:
         image: mysql:5.7.31
         env:
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: password
           TZ: "Asia/Tokyo"
-        volumes:
-          - mysql_data:/var/lib/mysql
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -56,4 +56,6 @@ jobs:
         CLIENT_HOST: www.example.com
       run: |
         cd server
+        bundle exec rails db:create
+        bundle exec rails db:migrate
         bundle exec rspec
