@@ -1,8 +1,9 @@
-class TicketsController < ApplicationController
+# チケットのCRUD
+class TicketsController < AuthenticatedController
   include TagExtractor
 
   def index
-    @tickets = Ticket.where({project_id: params[:project_id]})
+    @tickets = Ticket.where({ project_id: params[:project_id] })
   end
 
   def show
@@ -16,15 +17,15 @@ class TicketsController < ApplicationController
   end
 
   def create
-    #　TODO: 参画していないプロジェクトにはチケット作れない処理
+    # TODO: 参画していないプロジェクトにはチケット作れない処理
     @project = Project.find(params[:project_id])
-    @ticket = @project.tickets.create!(ticket_params.merge({user_id: current_user.id}))
+    @ticket = @project.tickets.create!(ticket_params.merge({ user_id: current_user.id }))
 
     extract_tags(ticket_params[:body]).each do |tag|
       Tag.find_or_create_by(body: tag)
     end
 
-    render json: {status: :ok, message: "チケットを作成しました", created: @ticket.id}
+    render json: { status: :ok, message: 'チケットを作成しました', created: @ticket.id }
   end
 
   def edit
@@ -34,14 +35,16 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    @ticket.update(ticket_params)
+    @ticket.update!(ticket_params)
 
     extract_tags(ticket_params[:body]).each do |tag|
       Tag.find_or_create_by(body: tag)
     end
+    render json: { status: :ok, message: 'チケットを更新しました', created: @ticket.id }
   end
 
   private
+
   def ticket_params
     params.require(:ticket).permit(:body, :opinion_type)
   end

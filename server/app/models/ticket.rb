@@ -1,6 +1,8 @@
+# チケット
 class Ticket < Opinion
-  has_many :comments, foreign_key: "reference_id"
+  belongs_to :project
+  has_many :comments, foreign_key: 'reference_id'
   @table_name = :opinions
 
-  validates :body, length: {minimum: 1, maximum: 100}
+  validates :body, presence: true, length: { minimum: 1, maximum: 100 }
 end
