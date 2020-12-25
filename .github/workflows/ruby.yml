@@ -28,7 +28,7 @@ jobs:
         ports:
           - "33006:3306"
         volumes:
-          - ./mysql_data:/var/lib/mysql
+          - mysql_data:/var/lib/mysql
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
