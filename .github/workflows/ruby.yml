@@ -16,16 +16,6 @@ on:
 
 jobs:
   test:
-    services:
-      db:
-        image: mariadb:10.3 
-        env:
-          MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD: password
-          TZ: "Asia/Tokyo" 
-        ports:  
-        - 3306:3306 
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +41,7 @@ jobs:
         RAILS_ENV: test
         DB_USER: root
         DB_PASSWORD: password
-        DB_HOST: db
+        DB_HOST: localhost
         DB_DATABASE: post-mortem_test
         CLIENT_HOST: www.example.com
       run: |
