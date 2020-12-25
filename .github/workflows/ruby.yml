@@ -53,7 +53,7 @@ jobs:
         RAILS_ENV: test
         DB_USER: root
         DB_PASSWORD: password
-        DB_HOST: db
+        DB_HOST: mysql
         DB_DATABASE: post-mortem_test
         CLIENT_HOST: www.example.com
       run: |
