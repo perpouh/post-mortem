@@ -11,14 +11,12 @@ class TicketsController < AuthenticatedController
     @ticket = Ticket.find(params[:id])
   end
 
-  def new
-    @project = Project.find(params[:project_id])
-    @ticket = @project.tickets.build
-  end
-
   def create
-    # TODO: 参画していないプロジェクトにはチケット作れない処理
-    @project = Project.find(params[:project_id])
+    @project = Project.where(id: params[:project_id]).joining(current_user)
+
+    # 参画していないプロジェクトにはチケット作れない処理
+    raise Forbidden.new if @project.blank?
+
     @ticket = @project.tickets.create!(ticket_params.merge({ user_id: current_user.id }))
 
     extract_tags(ticket_params[:body]).each do |tag|
@@ -26,11 +24,6 @@ class TicketsController < AuthenticatedController
     end
 
     render json: { status: :ok, message: 'チケットを作成しました', created: @ticket.id }
-  end
-
-  def edit
-    @project = Project.find_by(params[:project_id])
-    @ticket = Ticket.find(params[:id])
   end
 
   def update
