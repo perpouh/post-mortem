@@ -1,5 +1,1 @@
-class Forbidden < ActionController::ActionControllerError
-  def http_status
-    403
-  end
-end
+class Forbidden < ActionController::ActionControllerError;end

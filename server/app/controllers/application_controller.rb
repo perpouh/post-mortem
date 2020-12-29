@@ -6,8 +6,9 @@ class ApplicationController < ActionController::API
   rescue_from Forbidden, with: :rescue403
 
   def rescue403(e)
+    @exception = e
     request.format = :json if request.xhr?
-    render json: { status: :forbidden }
+    render json: { header: {result: :forbidden }, status: :forbidden }
   end
 
   rescue_from ActiveRecord::RecordInvalid, with: :rescue422

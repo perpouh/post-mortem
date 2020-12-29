@@ -47,7 +47,7 @@ RSpec.describe TicketsController, type: :request do
       expect(response).to have_http_status(:success)
     end
     it 'returns http forbidden' do
-      # 参加していないプロジェクトに対してチケットを作成することはできない　未実装
+      # 参加していないプロジェクトに対してチケットを作成することはできない
       post project_tickets_path(project), params: {ticket: newticket}, headers: @auth_tokens
       expect(response).to have_http_status(:forbidden)
     end
@@ -55,7 +55,8 @@ RSpec.describe TicketsController, type: :request do
       # バリデーションエラー
       params = {
         ticket: {
-          body: ""
+          body: "",
+          opinion_type: :keep_on
         }
       }
       post project_tickets_path(project), params: params, headers: @auth_tokens
