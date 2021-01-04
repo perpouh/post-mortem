@@ -7,7 +7,7 @@ class Project < ApplicationRecord
 
   scope :joining, ->(user_id) { where(id: Member.project_list(user_id).map(&:project_id)) }
 
-  validates :name, length: { minimum: 1, maximum: 100 }
+  validates :name, length: { minimum: 1, maximum: 100 }, uniqueness: { case_sensitive: false }
   # validates :repository_url
   # validates :backlog_url
   # validates :jira_url

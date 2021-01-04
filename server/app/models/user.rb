@@ -15,4 +15,8 @@ class User < ApplicationRecord
     # 許可するドメインをどこで管理するかは後で考える。環境変数かDBか
     errors.add(:email, 'メールアドレスが不正です。システムに許可されたドメイン以外は登録できません。') unless email.end_with?('co.jp')
   end
+
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :username, uniqueness: { case_sensitive: false }
+  validates :nickname, uniqueness: { case_sensitive: false }
 end
