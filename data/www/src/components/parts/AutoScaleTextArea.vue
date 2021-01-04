@@ -9,16 +9,36 @@
       </li>
     </ul>
     <div id="write" class="tab-body" v-show="write">
-      <textarea
-        ref="adjust_textarea"
-        data-preview="#preview"
-        :placeholder="placeholder"
-        :class="cls"
-        @change="adjustHeight"
-        @keyup="adjustHeight"
-        @paste="adjustHeight"
-        v-model="body"
-      ></textarea>
+      <mentionable :keys="['@', '#']" :items="items" offset="6" @open="onOpen">
+        <textarea
+          ref="adjust_textarea"
+          data-preview="#preview"
+          :placeholder="placeholder"
+          :class="cls"
+          @change="adjustHeight"
+          @keyup="adjustHeight"
+          @paste="adjustHeight"
+          v-model="body"
+        ></textarea>
+
+        <template #no-result>
+          <div class="dim">No result</div>
+        </template>
+        <template #item-@="{ item }">
+          <div class="user">
+            {{ item.value }}
+            <span class="dim"> ({{ item.firstName }}) </span>
+          </div>
+        </template>
+        <template #item-#="{ item }">
+          <div class="issue">
+            <span class="number"> #{{ item.value }} </span>
+            <span class="dim">
+              {{ item.label }}
+            </span>
+          </div>
+        </template>
+      </mentionable>
     </div>
     <div id="preview" class="tab-body markdown-body" v-show="preview">
       <div id="preview"></div>
@@ -29,21 +49,54 @@
 
 <script>
 import TextareaMarkdown from "textarea-markdown";
+import { Mentionable } from "vue-mention";
 export default {
-  data(){
+  data() {
     return {
-      tab: 'write',
-      body: ""
-    }
+      tab: "write",
+      body: "",
+      items: [],
+      users: [
+        {
+          value: 'akryum',
+          firstName: 'Guillaume',
+        },
+        {
+          value: 'posva',
+          firstName: 'Eduardo',
+        },
+        {
+          value: 'atinux',
+          firstName: 'Sébastien',
+        },
+      ],
+      issues: [
+        {
+          value: 123,
+          label: 'Error with foo bar',
+          searchText: 'foo bar'
+        },
+        {
+          value: 42,
+          label: 'Cannot read line',
+          searchText: 'foo bar line'
+        },
+        {
+          value: 77,
+          label: 'I have a feature suggestion',
+          searchText: 'feature'
+        }
+      ]
+    };
   },
   props: ["cls", "placeholder"],
   computed: {
-    write: function(){
-      return this.tab == 'write';
+    write: function () {
+      return this.tab == "write";
     },
-    preview: function(){
-      return this.tab == 'preview'
-    }
+    preview: function () {
+      return this.tab == "preview";
+    },
   },
   methods: {
     adjustHeight() {
@@ -55,13 +108,20 @@ export default {
         textarea.style.height = textarea.scrollHeight + "px";
       });
     },
-    send(){
-      this.$emit('send', this.body)
-    }
+    send() {
+      this.$emit("send", this.body);
+    },
+    onOpen:function (key) {
+      this.items = key === '@' ? this.users : this.issues
+    },
   },
   mounted() {
     let textarea = document.querySelector("textarea");
     new TextareaMarkdown(textarea);
   },
+  components: {
+    TextareaMarkdown,
+    Mentionable
+  }
 };
 </script>
