@@ -1,0 +1,1 @@
+class Forbidden < ActionController::ActionControllerError; end
