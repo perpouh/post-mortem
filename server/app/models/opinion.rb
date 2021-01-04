@@ -7,7 +7,7 @@ class Opinion < ApplicationRecord
   end
 
   # TODO: ここの書き方が気に食わない
-  scope :tickets_only, -> { where(opinion_type: [:keep_on, :problem, :try_to]) }
+  scope :tickets_only, -> { where(opinion_type: %i[keep_on problem try_to]) }
 
   scope :comments_only, -> { where(opinion_type: :comment) }
 
