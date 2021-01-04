@@ -41,16 +41,17 @@ class TicketsController < AuthenticatedController
   end
 
   def joining
-    @project = Project.where(id: params[:project_id]).joining(current_user)
+    # 理論上というかid指定してるので一件しか返らないはずだけどfirstはなんとなくキモい
+    @project = Project.where(id: params[:project_id]).joining(current_user).first
 
     # 参画していないプロジェクトにはチケット作れない処理
-    raise Forbidden.new if @project.blank?
+    raise Forbidden, '参加していないプロジェクトにはチケットを作成できない' if @project.blank?
   end
 
   def owner
-    @ticket = Ticket.where(id: params[:id]).created_by(current_user)
+    @ticket = Ticket.where(id: params[:id]).created_by(current_user).first
 
     # 自分が作ったチケット以外は修正できない
-    raise Forbidden.new if @ticket.blank?
+    raise Forbidden, '自分のチケットではないものを修正はできない' if @ticket.blank?
   end
 end

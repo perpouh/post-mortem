@@ -6,5 +6,5 @@ class Ticket < Opinion
 
   validates :body, presence: true, length: { minimum: 1, maximum: 100 }
 
-  scope :created_by, ->(user_id) { where(user_id: user_id) }
+  scope :created_by, ->(user) { where(user_id: user.id) }
 end

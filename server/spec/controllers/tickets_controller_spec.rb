@@ -3,7 +3,6 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe TicketsController, type: :request do
   let(:user) { create(:user) }
-  let(:ticket) { create(:ticket) }
   let(:newticket) { attributes_for(:newticket) }
   @auth_tokens = {}
   before do
@@ -42,38 +41,62 @@ RSpec.describe TicketsController, type: :request do
       post project_tickets_path(project), params: {ticket: newticket}
       expect(response).to have_http_status(:unauthorized)
     end
-    it 'returns http success' do
-      post project_tickets_path(project), params: {ticket: newticket}, headers: @auth_tokens
-      expect(response).to have_http_status(:success)
+
+    context 'when signed' do
+      before do
+        project.members.create({user_id: user.id})
+      end
+      it 'returns http success' do
+        post project_tickets_path(project), params: {ticket: newticket}, headers: @auth_tokens
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'returns http unprocessable_entity' do
+        # バリデーションエラー
+        params = {
+          ticket: {
+            body: "",
+            opinion_type: :keep_on
+          }
+        }
+        post project_tickets_path(project), params: params, headers: @auth_tokens
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
+
     it 'returns http forbidden' do
       # 参加していないプロジェクトに対してチケットを作成することはできない
       post project_tickets_path(project), params: {ticket: newticket}, headers: @auth_tokens
       expect(response).to have_http_status(:forbidden)
     end
-    it 'returns http unprocessable_entity' do
-      # バリデーションエラー
-      params = {
-        ticket: {
-          body: "",
-          opinion_type: :keep_on
-        }
-      }
-      post project_tickets_path(project), params: params, headers: @auth_tokens
-      expect(response).to have_http_status(:unprocessable_entity)
-    end
   end
   describe 'PATCH #update' do
     let(:project) { create(:project, :with_tickets) }
 
-    it 'returns http success' do
-      params = {
-        ticket: {
-          body: "テスト"
+    context 'when owned' do
+      before do
+        project.members.create({user_id: user.id})
+        @ticket = project.tickets.create({user_id: user.id, body: "ほげほげ", opinion_type: :keep_on})
+      end
+      it 'returns http success' do
+        params = {
+          ticket: {
+            body: "テスト"
+          }
         }
-      }
-      patch project_ticket_path(project, project.tickets.first), params: params, headers: @auth_tokens
-      expect(response).to have_http_status(:success)
+        patch project_ticket_path(project, @ticket), params: params, headers: @auth_tokens
+        expect(response).to have_http_status(:success)
+      end
+      it 'returns http unprocessable_entity' do
+        # バリデーションエラー
+        params = {
+          ticket: {
+            body: ""
+          }
+        }
+        patch project_ticket_path(project, @ticket), params: params, headers: @auth_tokens
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
     it 'returns http forbidden' do
       # チケット登録者以外は編集できない 未実装
@@ -84,16 +107,6 @@ RSpec.describe TicketsController, type: :request do
       }
       patch project_ticket_path(project, project.tickets.first), params: params, headers: @auth_tokens
       expect(response).to have_http_status(:forbidden)
-    end
-    it 'returns http unprocessable_entity' do
-      # バリデーションエラー
-      params = {
-        ticket: {
-          body: ""
-        }
-      }
-      patch project_ticket_path(project, project.tickets.first), params: params, headers: @auth_tokens
-      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 end

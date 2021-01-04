@@ -1,1 +1,1 @@
-class Forbidden < ActionController::ActionControllerError;end
+class Forbidden < ActionController::ActionControllerError; end
