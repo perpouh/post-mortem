@@ -3,12 +3,12 @@
     <form>
       <div>
         <div class="toggle_radio">
-          <input type="radio" id="keep" value="keep" v-model="ticket.opinion_type">
-          <label for="keep" class="keep">keep</label>
+          <input type="radio" id="keep_on" value="keep_on" v-model="ticket.opinion_type">
+          <label for="keep_on" class="keep_on">Keep</label>
           <input type="radio" id="problem" value="problem" v-model="ticket.opinion_type">
           <label for="problem" class="problem">Problem</label>
-          <input type="radio" id="try" value="try" v-model="ticket.opinion_type">
-          <label for="try" class="try">Try</label>
+          <input type="radio" id="try_to" value="try_to" v-model="ticket.opinion_type">
+          <label for="try_to" class="try_to">Try</label>
         </div>
         <button class="btn-primary">テンプレート</button>
       </div>
@@ -26,7 +26,7 @@ export default{
     return {
       ticket: {
         body: "",
-        opinion_type: 'keep'
+        opinion_type: 'keep_on'
       },
       placeholder: "チケットには #ハッシュタグ をつけることができます。 #Rails #Docker #設計",
       template: ""

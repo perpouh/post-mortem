@@ -47,7 +47,7 @@ input[type="text"], input[type="url"], input[type="email"], input[type="password
     display: none;
     &:checked + label{
       background-color: rgba(0,0,0,.05);
-      &.keep{
+      &.keep_on{
         background-color: #28a745;
         color: white;
       }
@@ -55,7 +55,7 @@ input[type="text"], input[type="url"], input[type="email"], input[type="password
         background-color: #cb2431;
         color: white;
       }
-      &.try{
+      &.try_to{
         background-color: #0366d6;
         color: white;
       }
