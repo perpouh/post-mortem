@@ -19,4 +19,6 @@ class Opinion < ApplicationRecord
   }
 
   validates :body, presence: true, length: { minimum: 1, maximum: 1000 }
+
+  scope :mentioned, -> (user) { where('body like ?', "%@#{user.username}%") }
 end

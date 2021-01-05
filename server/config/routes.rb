@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
   namespace :my do
     get "projects", to: "projects#index", defaults: {format: :json}
+    get "tickets/newer", to: "tickets#newer", defaults: {format: :json}
+    get "tickets/active", to: "tickets#active", defaults: {format: :json}
+    get "tickets/mentioned", to: "tickets#mentioned", defaults: {format: :json}
   end
 end
