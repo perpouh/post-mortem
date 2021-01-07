@@ -12,10 +12,10 @@
 <script>
 import MarkdownIt from 'markdown-it';
 export default{
-  props:['ticket', 'project'],
+  props:['ticket', 'project_id'],
   methods: {
     gotoDetail(){
-      this.$router.push(`/project/${this.project.id}/ticket/${this.ticket.id}`);
+      this.$router.push(`/project/${this.project_id}/ticket/${this.ticket.id}`);
     }
   }
 }

@@ -3,10 +3,7 @@
     <ticket :ticket="ticket"></ticket>
     <div class="comments">
       <comment v-for="comment in comments" :key="comment.id" :comment="comment"></comment>
-      <div class="comment">
-        <auto-scale-text-area @send="sendComment"></auto-scale-text-area>
-        <button>送信</button>
-      </div>
+      <auto-scale-text-area @send="sendComment"></auto-scale-text-area>
     </div>
   </layout>
 </template>

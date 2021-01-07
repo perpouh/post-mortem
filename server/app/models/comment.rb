@@ -1,7 +1,6 @@
 # コメントはチケットに紐づく
 class Comment < Opinion
-  belongs_to :ticket, foreign_key: 'reference_id'
-  belongs_to :user
+  belongs_to :ticket, class_name: 'Ticket', foreign_key: 'reference_id', optional: true
 
-  @table_name = :opinions
+  belongs_to :user
 end
