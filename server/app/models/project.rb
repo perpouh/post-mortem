@@ -24,17 +24,4 @@ class Project < ApplicationRecord
       members << Member.new({user_id: user.id})
     end
   end
-
-  # 個別でアサインできてもいいかと思ったけどBacklogとの整合性が取れなくなるのがダルい
-  # def assign(users)
-  #   users.each do |user|
-  #     members << Member.new({user_id: user.id})
-  #   end
-  # end
-  # 同じ理由で個別解任も実装しない
-  # def dismiss(users)
-  #   users.each do |user|
-  #     members.find_by({user_id: user.id}).destroy
-  #   end
-  # end
 end
