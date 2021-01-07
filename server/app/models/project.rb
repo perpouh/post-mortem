@@ -20,8 +20,8 @@ class Project < ApplicationRecord
   # https://developer.nulab.com/ja/docs/backlog/api/2/get-project-user-list/#
   def assign(backlog_users)
     backlog_users.each do |backlog_user|
-      user = User.find_or_invite({email: backlog_user.mailAddress})
-      members << Member.new({user_id: user.id})
+      user = User.find_or_invite({ email: backlog_user.mailAddress })
+      members << Member.new({ user_id: user.id })
     end
   end
 end
