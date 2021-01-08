@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="tab">
     <ul class="tab-header">
       <li class="tab" :class="{ active: write }" @click="tab = 'write'">
         Write

@@ -6,6 +6,7 @@
 @import 'comment.scss';
 @import 'ticket.scss';
 @import 'vue-mention.scss';
+@import 'tab.scss';
 
 body{
   background-color: $background-color;
@@ -24,35 +25,63 @@ div::after{
   border-radius: 4px;
 }
 
-.tab-header{
-  height: 50px;
-  padding-top: 10px;
-  padding-left: 8px;
-  background-color: #f6f8fa;
-  border-bottom: solid 1px #e1e4e8;
-  list-style-type: none;
-  .tab{
-    float: left;
-    height: 40px;
-    padding: 0 15px;
-    line-height: 40px;
-    text-align: center;
-    margin-left: 4px;
-    &.active{
-      border: solid 1px #e1e4e8;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      background-color: white;
-      border-bottom-color: white;
+@mixin badge{
+  display: block;
+  position: absolute;
+  left: .8em;
+  top: .8em;
+}
+
+.row{
+  min-height: 4em;
+  &.keep_on::before{
+    @include badge;
+    content: "●"; // ここをSVGに置き換える予定
+    color: $keep;
+  }
+  &.problem::before{
+    @include badge;
+    content: "●";
+    color: $problem;
+  }
+  &.try_to::before{
+    @include badge;
+    content: "●";
+    color: $try;
+  }
+  position: relative;
+  &:not(:first-of-type){
+    border-top: 1px solid #e1e4e8;
+  }
+  .ticket-body {
+    margin-left: 4em;
+    margin-top: .4em;
+    .ticket-title{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-size: 16pt;
+      width: calc(100% - 64px);
+      height: 2em;
+    }
+    .ticket-last-update{
+      color: #666;
+      font-size: 10pt;
     }
   }
-}
-.tab-body{
-  width: 98%;
-  margin: 15px auto;
-  textarea{
-    border-color: #e1e4e8;
-    background-color: #fafbfc;
-    display: block;
+  .commented{
+    position: absolute;
+    right: 1em;
+    top: .8em;
+    font-size: 10pt;
+    color: #666;
+  }
+  .liked{
+    position: absolute;
+    right: 1em;
+    top: 2.4em;
+    font-size: 10pt;
+    color: #666;
   }
 }

@@ -1,26 +1,28 @@
 <template>
   <layout>
-    <ul class="tab-header">
-      <li class="tab" :class="{active: summary}" @click="tab='summary'">サマリ</li>
-      <li class="tab" :class="{active: ticket}" @click="tab='ticket'">チケット</li>
-    </ul>
-    <div id="summary" class="tab-body" v-show="summary">
-      <!-- <badge v-for="tag in tags" v-bind:key="tag.id"></badge> -->
-      <h2>プロジェクトマネージャ</h2>
-      {{manager.nickname}}
-      <h2>メンバー一覧</h2>
-      <ul>
-        <li v-for="member in members" v-bind:key="member.id">{{member.name}}</li>
+    <div class="tab">
+      <ul class="tab-header">
+        <li class="tab" :class="{active: summary}" @click="tab='summary'">サマリ</li>
+        <li class="tab" :class="{active: ticket}" @click="tab='ticket'">チケット</li>
       </ul>
-    </div>
-    <div id="ticket" class="tab-body" v-show="ticket">
-      <h2>新着チケット</h2>
-      <div class="card-header">
-        <router-link :to="`/project/${$route.params.id}/ticket/new`" class="btn-primary">作成</router-link>
+      <div id="summary" class="tab-body" v-show="summary">
+        <!-- <badge v-for="tag in tags" v-bind:key="tag.id"></badge> -->
+        <h2>プロジェクトマネージャ</h2>
+        {{manager.nickname}}
+        <h2>メンバー一覧</h2>
+        <ul>
+          <li v-for="member in members" v-bind:key="member.id">{{member.name}}</li>
+        </ul>
       </div>
-      <ul>
-        <ticket-row v-for="ticket in tickets" v-bind:key="ticket.id" :ticket="ticket" :project="project"></ticket-row>
-      </ul>
+      <div id="ticket" class="tab-body" v-show="ticket">
+        <h2>新着チケット</h2>
+        <div class="card-header">
+          <router-link :to="`/project/${$route.params.id}/ticket/new`" class="btn-primary">作成</router-link>
+        </div>
+        <ul>
+          <ticket-row v-for="ticket in tickets" v-bind:key="ticket.id" :ticket="ticket" :project_id="project.id"></ticket-row>
+        </ul>
+      </div>
     </div>
   </layout>
 </template>

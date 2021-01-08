@@ -1,10 +1,11 @@
 <template>
   <layout>
-    <div>
+    <div class="tab">
       <ul class="tab-header">
         <li class="tab" :class="{active: newer}" @click="tab='newer'">新着チケット</li>
         <li class="tab" :class="{active: active}" @click="tab='active'">アクティブ</li>
         <li class="tab" :class="{active: mentioned}" @click="tab='mentioned'">メンション</li>
+        <li class="tab" :class="{active: bookmark}" @click="tab='bookmark'">ブックマーク</li>
       </ul>
       <div id="newer" class="tab-body" v-show="newer">
         <h2>新しく登録されたチケット</h2>
@@ -16,6 +17,10 @@
       </div>
       <div id="mentioned" class="tab-body" v-show="mentioned">
         <h2>メンションされたチケット</h2>
+        <ticket-list :tickets="tickets"></ticket-list>
+      </div>
+      <div id="bookmark" class="tab-body" v-show="bookmark">
+        <h2>ブックマーク</h2>
         <ticket-list :tickets="tickets"></ticket-list>
       </div>
     </div>
@@ -42,6 +47,9 @@ export default{
     },
     mentioned: function(){
       return this.tab == 'mentioned'
+    },
+    bookmark: function(){
+      return this.tab == 'bookmark'
     }
   },
   components: {

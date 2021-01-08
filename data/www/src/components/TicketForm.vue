@@ -28,7 +28,7 @@ export default{
         body: "",
         opinion_type: 'keep_on'
       },
-      placeholder: "チケットには #ハッシュタグ をつけることができます。 #Rails #Docker #設計",
+      placeholder: "チケットには #ハッシュタグ をつけることができます。 #Rails #Docker #設計\ngitコミットメッセージと同じく、冒頭一行をタイトルとして扱います。",
       template: ""
     }
   },
