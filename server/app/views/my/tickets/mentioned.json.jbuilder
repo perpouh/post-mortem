@@ -1,3 +1,3 @@
-json.array! @opinions do |opinion|
-  json.merge! opinion.attributes
+json.array! @tickets do |ticket|
+  json.partial! partial: 'tickets/detail', locals: { ticket: ticket }
 end

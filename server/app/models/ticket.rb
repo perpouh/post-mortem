@@ -8,4 +8,8 @@ class Ticket < Opinion
   scope :in_joining_project, ->(user) { where(project_id: Project.joining(user.id).map(&:id)) }
 
   scope :active, -> { eager_load(:comments).order('comments_opinions.updated_at desc') }
+
+  def title
+    body.split("\n").first
+  end
 end
