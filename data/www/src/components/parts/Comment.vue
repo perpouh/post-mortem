@@ -7,13 +7,14 @@
     </div>
     <div class="comment-body markdown-body" v-html="decorate(comment.body)"></div>
     <div class="comment-footer">
-      <div class="liked" @click="like(comment.id)">{{comment.liked}}</div>
+      <div class="liked" @click="like(comment.id)"><font-awesome-icon icon="thumbs-up" /> {{comment.liked}}</div>
     </div>
   </div>
 </template>
 
 <script>
 import MarkdownIt from 'markdown-it';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default{
   props: ['comment'],
   methods: {
