@@ -22,35 +22,3 @@ export default{
   }
 }
 </script>
-
-<style lang="scss">
-.ticket-list{
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-    .list-header{
-      background-color: #f6f8fa;
-      height: 36px;
-      border-bottom: 1px solid #e1e4e8;
-    }
-    .list-body{
-      .ticket{
-        .badge{
-          height: 20px;
-          width: 20px;
-          border-radius: 10px;
-          position: absolute;
-          color: white;
-          &.keep{
-            background-color: green;
-          }
-        }
-        .ticket-body{
-          margin-left: 32px;
-        }
-        .ticket-footer{
-          margin-left: 32px;
-        }
-      }
-    }
-}
-</style>

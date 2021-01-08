@@ -5,7 +5,7 @@
     </div>
     <div class="list-body">
       <ul>
-        <li class="row" v-for="ticket in tickets" :key="ticket.id" :class="ticket.opinion_type" @click="gotoDetail">
+        <li class="row" v-for="ticket in tickets" :key="ticket.id" :class="ticket.opinion_type" @click="gotoDetail(ticket.id)">
           <div class="ticket-body">
             <div class="ticket-title">{{ticket.title}}</div>
             <div class="ticket-last-update">Last Update:{{ticket.updated_at}}</div>
@@ -28,8 +28,8 @@ export default{
     }
   },
   methods: {
-    gotoDetail(){
-      this.$router.push(`/project/${this.project_id}/ticket/${this.ticket.id}`);
+    gotoDetail(ticket_id){
+      this.$router.push(`/project/${this.$route.params.id}/ticket/${ticket_id}`);
     }
   },
   components: {FontAwesomeIcon}
