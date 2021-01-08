@@ -15,13 +15,7 @@
         </ul>
       </div>
       <div id="ticket" class="tab-body" v-show="ticket">
-        <h2>新着チケット</h2>
-        <div class="card-header">
-          <router-link :to="`/project/${$route.params.id}/ticket/new`" class="btn-primary">作成</router-link>
-        </div>
-        <ul>
-          <ticket-row v-for="ticket in tickets" v-bind:key="ticket.id" :ticket="ticket" :project_id="project.id"></ticket-row>
-        </ul>
+        <ticket-list :tickets="tickets" :project_id="project.id"></ticket-list>
       </div>
     </div>
   </layout>
@@ -29,12 +23,12 @@
 
 <script>
 import Layout from './layouts/Layout'
-import TicketRow from './parts/TicketRow'
+import TicketList from './parts/TicketList'
 export default {
   name: 'ProjectDetail',
   components: {
     Layout,
-    TicketRow
+    TicketList
   },
   data() {
     return {

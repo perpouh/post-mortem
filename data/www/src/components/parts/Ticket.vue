@@ -29,6 +29,8 @@ export default{
     border-radius: 4px;
     .list-header{
       background-color: #f6f8fa;
+      height: 36px;
+      border-bottom: 1px solid #e1e4e8;
     }
     .list-body{
       .ticket{

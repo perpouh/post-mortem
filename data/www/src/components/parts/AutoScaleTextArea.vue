@@ -39,11 +39,11 @@
           </div>
         </template>
       </mentionable>
+      <button v-on:click="send()" class="btn-primary" :disabled="!body">送信</button>
     </div>
     <div id="preview" class="tab-body markdown-body" v-show="preview">
       <div id="preview"></div>
     </div>
-    <button v-on:click="send()" class="btn-primary">送信</button>
   </div>
 </template>
 
