@@ -5,14 +5,21 @@
     </div>
     <div class="list-body">
       <ul>
-        <ticket-row v-for="ticket in tickets" :key="ticket.id" :ticket="ticket" :project_id="ticket.project_id"></ticket-row>
+        <li class="row" v-for="ticket in tickets" :key="ticket.id" :class="ticket.opinion_type" @click="gotoDetail">
+          <div class="ticket-body">
+            <div class="ticket-title">{{ticket.title}}</div>
+            <div class="ticket-last-update">Last Update:{{ticket.updated_at}}</div>
+          </div>
+          <div class="commented"><font-awesome-icon icon="comment-alt" /> {{ticket.commented}}</div>
+          <div class="liked"><font-awesome-icon icon="thumbs-up" /> {{ticket.liked}}</div>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import TicketRow from './TicketRow';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default{
   props: ['tickets', 'project_id'],
   data(){
@@ -20,8 +27,11 @@ export default{
       opinion_type: ''
     }
   },
-  components: {
-    TicketRow
-  }
+  methods: {
+    gotoDetail(){
+      this.$router.push(`/project/${this.project_id}/ticket/${this.ticket.id}`);
+    }
+  },
+  components: {FontAwesomeIcon}
 }
 </script>
