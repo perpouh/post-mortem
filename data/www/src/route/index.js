@@ -12,11 +12,11 @@ import Tag from '@/components/Tag'
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
   routes: [
     // {path: '', component: },
     {path: '/', component: Dashboard},
-    {path: '/sign_in', component: Signin},
+    {path: '/sign_in', component: Signin, meta: { isPublic: true }},
     {path: '/search', component: Search},
     {path: '/tag/:tag', component: Tag},
     {path: '/project/new', component: ProjectForm},
@@ -26,3 +26,14 @@ export default new Router({
     {path: '/project/:project_id/ticket/:id', component: TicketDetail}
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // isPublic でない場合(=認証が必要な場合)、かつ、ログインしていない場合
+  if (to.matched.some(record => !record.meta.isPublic) && !router.app.$stores.getters['auth/loggedIn']) {
+    next({ path: '/sign_in', query: { redirect: to.fullPath }});
+  } else {
+    next();
+  }
+});
+
+export default router

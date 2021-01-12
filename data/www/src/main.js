@@ -14,7 +14,7 @@ require('@/assets/sass/application.scss')
 
 /* font awesome */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCommentAlt, faThumbsUp, faBookMa, faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faCommentAlt, faThumbsUp, faBookMark, faBookmark } from '@fortawesome/free-solid-svg-icons'
 // import { faCommentAlt, faThumbsUp, faQuestionCircle } from '@fortawesome/pro-regular-svg-icons' # TODO
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 

@@ -39,6 +39,9 @@ export default {
         client: state.client,
         uid: state.uid
       }
+    },
+    loggedIn: function(state){
+      return !! state.access_token
     }
   }
 }
