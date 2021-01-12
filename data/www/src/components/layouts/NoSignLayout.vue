@@ -18,7 +18,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 main{
   max-width: 1260px;
   margin: 0 auto;

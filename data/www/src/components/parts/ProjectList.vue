@@ -24,19 +24,3 @@ export default{
   }
 }
 </script>
-
-<style lang="scss">
-  .project{
-    box-shadow: 0 0 0px 1px rgba(0,0,0,.2);
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition-duration: .3s;
-    &:not(:first-of-type){
-      margin-top: 24px;
-    }
-    &:hover{
-      box-shadow: 0px 0px 10px 1px rgba(0,0,0,.2);
-    }
-  }
-</style>

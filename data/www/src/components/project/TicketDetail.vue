@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Layout from './layouts/Layout';
-import AutoScaleTextArea from './parts/AutoScaleTextArea.vue';
-import Ticket from './parts/Ticket';
-import Comment from './parts/Comment';
+import Layout from '../layouts/ProjectLayout';
+import AutoScaleTextArea from '../parts/AutoScaleTextArea.vue';
+import Ticket from '../parts/Ticket';
+import Comment from '../parts/Comment';
 export default{
   components: {
     Layout,
@@ -49,6 +49,7 @@ export default{
         }
       }).then(function(res){
         this.$toasted.global.success()
+        location.reload()
       }.bind(this))
       .catch(function (error) {
         this.$toasted.global.error({message: error.data.message})

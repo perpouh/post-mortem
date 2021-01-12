@@ -53,10 +53,3 @@ export default{
   }
 }
 </script>
-
-<style>
-main{
-  max-width: 1260px;
-  margin: 0 auto;
-}
-</style>

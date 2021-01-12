@@ -6,3 +6,4 @@ json.liked ticket.liked
 json.opinion_type ticket.opinion_type
 json.updated_at ticket.updated_at.strftime('%Y/%m/%d %H:%M')
 json.commented ticket.comments.count
+json.project_name ticket.project.name

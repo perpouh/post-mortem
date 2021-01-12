@@ -7,6 +7,11 @@
 @import 'ticket.scss';
 @import 'vue-mention.scss';
 @import 'tab.scss';
+@import 'ticket-list.scss';
+
+header{
+  background-color: #666;
+}
 
 body{
   background-color: $background-color;
@@ -25,72 +30,13 @@ div::after{
   border-radius: 4px;
 }
 
-@mixin badge{
-  display: block;
-  position: absolute;
-  left: .8em;
-  top: .8em;
+.contents{
+  max-width: 1260px;
+  margin: 0 auto;
 }
-.ticket-list{
-  border: 1px solid #e1e4e8;
-  border-radius: 4px;
-  .list-header{
-    background-color: #f6f8fa;
-    height: 36px;
-    border-bottom: 1px solid #e1e4e8;
-  }
-  .row{
-    min-height: 4em;
-    list-style-type: none;
-    &.keep_on::before{
-      @include badge;
-      content: "●"; // ここをSVGに置き換える予定
-      color: $keep;
-    }
-    &.problem::before{
-      @include badge;
-      content: "●";
-      color: $problem;
-    }
-    &.try_to::before{
-      @include badge;
-      content: "●";
-      color: $try;
-    }
-    position: relative;
-    &:not(:first-of-type){
-      border-top: 1px solid #e1e4e8;
-    }
-    .ticket-body {
-      margin-left: 4em;
-      margin-top: .4em;
-      .ticket-title{
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        font-size: 16pt;
-        width: calc(100% - 64px);
-        height: 2em;
-      }
-      .ticket-last-update{
-        color: #666;
-        font-size: 10pt;
-      }
-    }
-    .commented{
-      position: absolute;
-      right: 1em;
-      top: .8em;
-      font-size: 10pt;
-      color: #666;
-    }
-    .liked{
-      position: absolute;
-      right: 1em;
-      top: 2.4em;
-      font-size: 10pt;
-      color: #666;
-    }
+
+a{
+  &:hover{
+    text-decoration: underline;
   }
 }

@@ -1,13 +1,15 @@
 <template>
-  <div class="tab">
-    <ul class="tab-header">
-      <li class="tab" :class="{ active: write }" @click="tab = 'write'">
-        Write
-      </li>
-      <li class="tab" :class="{ active: preview }" @click="tab = 'preview'">
-        Preview
-      </li>
-    </ul>
+  <div class="tab secondary">
+    <div class="tab-header">
+      <ul>
+        <li class="tab" :class="{ active: write }" @click="tab = 'write'">
+          Write
+        </li>
+        <li class="tab" :class="{ active: preview }" @click="tab = 'preview'">
+          Preview
+        </li>
+      </ul>
+    </div>
     <div id="write" class="tab-body" v-show="write">
       <mentionable :keys="['@', '#']" :items="items" offset="6" @open="onOpen">
         <textarea
