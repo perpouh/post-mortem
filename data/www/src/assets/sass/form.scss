@@ -33,6 +33,24 @@ input[type="text"], input[type="url"], input[type="email"], input[type="password
     margin-top: $line-base * .5;
   }
 }
+.search-form{
+  width: fit-content;
+  position: relative;
+  input[type="search"]{
+    position: relative;
+    background-color: white;
+    height: 2em;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 0px rgba(0,0,0,.4) inset;
+    padding-left: 32px;
+  }
+  .watermark{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: #626262;
+  }
+}
 
 .btn-primary{
   @include button();

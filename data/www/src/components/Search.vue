@@ -13,7 +13,7 @@ export default{
     return {
       opinions: [],
       q: {
-        body_matches_any: "",
+        body_matches_all: "",
         opinion_type_in: []
       }
     }
@@ -37,7 +37,7 @@ export default{
     fetchData () {
       this.$http.get("/search", {
         params:{
-          'q[body_matches_any]': this.$route.query.q
+          'q[body_matches_all]': this.$route.query.q
         }
       })
       .then(function(res){

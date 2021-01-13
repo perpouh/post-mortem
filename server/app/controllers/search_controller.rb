@@ -10,7 +10,7 @@ class SearchController < AuthenticatedController
 
   def search_query
     {
-      'body_matches_any' => params[:q][:body_matches_any].split(/\p{blank}/).map { |t| "%#{t}%" },
+      'body_matches_all' => params[:q][:body_matches_all].split(/\p{blank}/).map { |t| "%#{t}%" },
       'opinion_type_in' => params[:q][:opinion_type_in]
     }
   end

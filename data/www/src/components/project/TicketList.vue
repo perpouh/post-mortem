@@ -1,6 +1,6 @@
 <template>
   <layout>
-    <ticket-list :tickets="tickets"></ticket-list>
+    <ticket-list :tickets="tickets" :project_id="project_id"></ticket-list>
   </layout>
 </template>
 
@@ -10,7 +10,8 @@ import TicketList from '../parts/TicketList'
 export default {
   data(){
     return {
-      tickets: []
+      tickets: [],
+      project_id: null
     }
   },
   components: {
@@ -25,8 +26,8 @@ export default {
   },
   methods: {
     fetchData () {
-      let projId = this.$route.params.id
-      this.$http.get(`/projects/${projId}`)
+      this.project_id = this.$route.params.id
+      this.$http.get(`/projects/${this.project_id}`)
       .then(function(res){
         // this.project = res.data.project
         this.tickets = res.data.project.tickets
