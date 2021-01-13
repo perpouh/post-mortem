@@ -27,7 +27,8 @@ export default{
     }
   },
   created(){
-    this.fetchData()
+    this.fetchData();
+    this.searchWord = this.$route.query.q;
   },
   watch: {
     '$route': 'fetchData',

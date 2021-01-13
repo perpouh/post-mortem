@@ -1,6 +1,7 @@
 # チケットとコメントのIDを通し番号にしたかった
 class Opinion < ApplicationRecord
   belongs_to :user
+  belongs_to :project
 
   def ticket?
     keep_on? or problem? or try_to?
