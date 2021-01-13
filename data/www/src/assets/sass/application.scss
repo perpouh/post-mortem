@@ -9,10 +9,7 @@
 @import 'tab.scss';
 @import 'ticket-list.scss';
 @import 'opinion-list.scss';
-
-header{
-  background-color: #F5DF4D;
-}
+@import 'header.scss';
 
 body{
   background-color: $background-color;

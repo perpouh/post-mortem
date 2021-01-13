@@ -1,19 +1,6 @@
 <template>
   <div>
-    <header>
-      <a href="/" class="bland"
-        ><img src="https://placehold.jp/150x50.png"
-      /></a>
-      <form class="search-form">
-        <input
-          type="search"
-          v-model="searchWord"
-          v-on:keydown.enter="submit"
-          placeholder="キーワード検索"
-        />
-        <font-awesome-icon icon="search" class="watermark" />
-      </form>
-    </header>
+    <common-header />
     <main>
       <slot />
     </main>
@@ -23,6 +10,7 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import CommonHeader from '../parts/Header';
 export default {
   name: "Layout",
   data() {
@@ -34,6 +22,7 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+    CommonHeader
   },
   created() {
     this.searchWord = this.$route.query.q;

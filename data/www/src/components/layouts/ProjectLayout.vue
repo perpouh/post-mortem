@@ -1,23 +1,10 @@
 <template>
   <div>
-    <header>
-      <a href="/" class="bland"
-        ><img src="https://placehold.jp/150x50.png"
-      /></a>
-      <form class="search-form">
-        <input
-          type="search"
-          v-model="searchWord"
-          v-on:keydown.enter="submit"
-          placeholder="キーワード検索"
-        />
-        <font-awesome-icon icon="search" class="watermark" />
-      </form>
-    </header>
+    <common-header />
     <main>
       <div class="tab primary">
         <div class="tab-header">
-          <h2>プロジェクト名</h2>
+          <h2>{{project.name}}</h2>
           <p>プロジェクトの簡単な説明</p>
           <ul>
             <li
@@ -50,17 +37,17 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import CommonHeader from '../parts/Header';
 export default {
   name: "ProjectLayout",
   components: {
     FontAwesomeIcon,
+    CommonHeader
   },
   data() {
     return {
       tab: "ticket",
-      projects: [],
-      selectedProject: "",
-      searchWord: "",
+      project: {}
     };
   },
   computed: {
@@ -71,17 +58,18 @@ export default {
       return this.tab == "ticket";
     },
   },
-  created() {},
+  created() {
+    this.fetchData()
+  },
   watch: {
     $route: "fetchData",
   },
   methods: {
-    submit() {
-      // 日本語入力中のEnterは無視する
-      if (event.keyCode !== 13) return;
-
-      this.$router.push(`/search?q=${encodeURI(this.searchWord)}`);
-    },
+    fetchData(){
+      this.$http.get(`/projects/${this.$route.params.id}`).then(function(res){
+        this.project = res.data.project
+      }.bind(this))
+    }
   },
 };
 </script>
