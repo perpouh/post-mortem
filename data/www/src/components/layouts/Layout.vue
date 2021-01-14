@@ -1,7 +1,7 @@
 <template>
   <div>
     <common-header />
-    <main>
+    <main class="contents">
       <slot />
     </main>
     <footer>©2020 Perpouh.inc.</footer>

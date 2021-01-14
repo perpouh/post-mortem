@@ -1,9 +1,16 @@
 <template>
   <layout>
-    <div>
+      <!-- <div class="contents"> -->
       <h2>プロジェクト</h2>
-      <project-list :projects="projects"></project-list>
-    </div>
+      <form>
+        <input type="search" placeholder="検索">
+        <select>
+          <option>登録日時とか？</option>
+        </select>
+      </form>
+      <router-link to="/project/new" class="btn-primary">新規プロジェクト</router-link>
+        <project-list :projects="projects"></project-list>
+      <!-- </div> -->
   </layout>
 </template>
 
