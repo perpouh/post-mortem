@@ -4,8 +4,9 @@
     <main>
       <div class="tab primary">
         <div class="tab-header">
-          <h2>{{project.name}}</h2>
+          <h2>{{ project.name }}</h2>
           <p>プロジェクトの簡単な説明</p>
+          <horizontal-bar-chart />
           <ul>
             <li
               class="tab"
@@ -37,17 +38,19 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import CommonHeader from '../parts/Header';
+import CommonHeader from "../parts/Header";
+import HorizontalBarChart from "../parts/HorizontalBarChart";
 export default {
   name: "ProjectLayout",
   components: {
     FontAwesomeIcon,
-    CommonHeader
+    CommonHeader,
+    HorizontalBarChart,
   },
   data() {
     return {
       tab: "ticket",
-      project: {}
+      project: {},
     };
   },
   computed: {
@@ -57,19 +60,24 @@ export default {
     ticket: function () {
       return this.tab == "ticket";
     },
+    setting: function () {
+      return this.tab == "setting";
+    },
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   watch: {
     $route: "fetchData",
   },
   methods: {
-    fetchData(){
-      this.$http.get(`/projects/${this.$route.params.id}`).then(function(res){
-        this.project = res.data.project
-      }.bind(this))
-    }
+    fetchData() {
+      this.$http.get(`/projects/${this.$route.params.id}`).then(
+        function (res) {
+          this.project = res.data.project;
+        }.bind(this)
+      );
+    },
   },
 };
 </script>

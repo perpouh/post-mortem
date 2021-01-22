@@ -1,7 +1,7 @@
 <template>
   <div>
     <common-header />
-    <main class="contents">
+    <main>
       <slot />
     </main>
     <footer>©2020 Perpouh.inc.</footer>
@@ -30,13 +30,6 @@ export default {
   watch: {
     $route: "fetchData",
   },
-  methods: {
-    submit() {
-      // 日本語入力中のEnterは無視する
-      if (event.keyCode !== 13) return;
-
-      this.$router.push(`/search?q=${encodeURI(this.searchWord)}`);
-    },
-  },
+  methods: {},
 };
 </script>

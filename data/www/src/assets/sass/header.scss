@@ -1,31 +1,40 @@
-header{
-  background-color: #F5DF4D;
-  .search-form{
-    width: fit-content;
-    position: relative;
-    display: inline-block;
-    input[type="search"]{
+header {
+  background-color: $accent-color;
+  border-bottom: 1px solid $ticket-border-color;
+  .contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .search-form {
+      width: fit-content;
       position: relative;
-      background-color: white;
-      height: 2em;
-      border-radius: 4px;
-      box-shadow: 0 0 2px 0px rgba(0,0,0,.4) inset;
-      padding-left: 32px;
+      display: inline-block;
+      input[type="search"] {
+        position: relative;
+        background-color: white;
+        height: 2em;
+        border-radius: 4px;
+        box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.4) inset;
+        padding-left: 32px;
+      }
+      .watermark {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        color: $sub-text-color;
+      }
     }
-    .watermark{
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      color: #626262;
-    }
-  }
-  .nav-menu{
-    display: inline-block;
-    li{
-      float: left;
-      list-style-type: none;
-      &:hover{
-        font-weight: bold;
+    .nav-menu {
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      li {
+        float: left;
+        list-style-type: none;
+        padding: 0 15px;
+        &:hover {
+          font-weight: bold;
+        }
       }
     }
   }

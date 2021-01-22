@@ -1,5 +1,6 @@
 <template>
-    <header>
+  <header>
+    <div class="contents">
       <a href="/" class="bland"
         ><img src="https://placehold.jp/150x50.png"
       /></a>
@@ -17,7 +18,9 @@
         <li><router-link to="/projects">プロジェクト一覧</router-link></li>
         <li><router-link to="/settings">個人設定</router-link></li>
       </ul>
-    </header>
+      <a href="#">ログアウト</a>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -35,9 +38,14 @@ export default {
   created() {
     this.searchWord = this.$route.query.q;
   },
-  watch: {
-  },
+  watch: {},
   methods: {
+    submit() {
+      // 日本語入力中のEnterは無視する
+      if (event.keyCode !== 13) return;
+
+      this.$router.push(`/search?q=${encodeURI(this.searchWord)}`);
+    },
   },
 };
 </script>

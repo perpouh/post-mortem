@@ -6,12 +6,12 @@
   top: .8em;
 }
 .ticket-list{
-  border: 1px solid #e1e4e8;
+  border: 1px solid $ticket-border-color;
   border-radius: 4px;
   .list-header{
-    background-color: #f6f8fa;
+    background-color: $ticket-header-color;
     height: 36px;
-    border-bottom: 1px solid #e1e4e8;
+    border-bottom: 1px solid $ticket-border-color;
   }
   .row{
     min-height: 4em;
@@ -33,7 +33,7 @@
     }
     position: relative;
     &:not(:first-of-type){
-      border-top: 1px solid #e1e4e8;
+      border-top: 1px solid $ticket-border-color;
     }
     .ticket-body {
       margin-left: 4em;
@@ -51,7 +51,7 @@
     .ticket-footer{
       margin-left: 4em;
       margin-top: .4em;
-      color: #666;
+      color: $sub-text-color;
       font-size: 10pt;
     }
     .commented{
@@ -59,14 +59,14 @@
       right: 1em;
       top: .8em;
       font-size: 10pt;
-      color: #666;
+      color: $sub-text-color;
     }
     .liked{
       position: absolute;
       right: 1em;
       top: 2.4em;
       font-size: 10pt;
-      color: #666;
+      color: $sub-text-color;
     }
   }
 }

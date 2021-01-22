@@ -1,16 +1,23 @@
 /* color scheme*/
 $background-color: #fff;
 $main-text-color: #222;
-$sub-text-color: #444;
+$sub-text-color: #666;
 
 $main-color: pink;
 $sub-color: blue;
-$accent-color: red;
+$accent-color: #F5DF4D;
 
-$keep: green;
-$problem: red;
-$try: blue;
+$keep: #ABF44C;
+$problem: #F44C4C;
+$try: #4CB9F4;
 
-$failure : red;
-$info: aqua;
-$succeed: lime;
+$failure : #F44C4C;
+$info: #4CB9F4;
+$succeed: #ABF44C;
+
+$ticket-header-color: #F9EFA8;
+$ticket-body-color: #fafbfc;
+$ticket-border-color: #e1e4e8;
+
+$comment-header-color: #f1f8ff;
+$comment-border-color: rgba(3,102,214,.2);
