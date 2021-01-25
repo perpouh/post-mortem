@@ -6,24 +6,21 @@
         <div class="tab-header">
           <h2>{{ project.name }}</h2>
           <p>プロジェクトの簡単な説明</p>
-          <horizontal-bar-chart />
           <ul>
             <li
               class="tab"
               :class="{ active: summary }"
-              @click="tab = 'summary'"
             >
-              サマリ
+              <router-link :to="`/project/${this.$route.params.id}/summary`">サマリ</router-link>
             </li>
-            <li class="tab" :class="{ active: ticket }" @click="tab = 'ticket'">
-              チケット
+            <li class="tab" :class="{ active: ticket }">
+              <router-link :to="`/project/${this.$route.params.id}`">チケット</router-link>
             </li>
             <li
               class="tab"
               :class="{ active: setting }"
-              @click="tab = 'setting'"
             >
-              設定
+              <router-link :to="`/project/${this.$route.params.id}/setting`">設定</router-link>
             </li>
           </ul>
         </div>
@@ -39,20 +36,18 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import CommonHeader from "../parts/Header";
-import HorizontalBarChart from "../parts/HorizontalBarChart";
 export default {
   name: "ProjectLayout",
   components: {
     FontAwesomeIcon,
     CommonHeader,
-    HorizontalBarChart,
   },
   data() {
     return {
-      tab: "ticket",
       project: {},
     };
   },
+  props: ['tab'],
   computed: {
     summary: function () {
       return this.tab == "summary";
@@ -69,6 +64,7 @@ export default {
   },
   watch: {
     $route: "fetchData",
+    tab: "changeTab"
   },
   methods: {
     fetchData() {
@@ -78,6 +74,9 @@ export default {
         }.bind(this)
       );
     },
+    changeTab() {
+      
+    }
   },
 };
 </script>

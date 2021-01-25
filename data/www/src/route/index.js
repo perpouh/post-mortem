@@ -4,13 +4,14 @@ import Signin from '@/components/Signin'
 // import ProjectForm from '@/components/ProjectForm'
 import Dashboard from '@/components/Dashboard'
 import ProjectList from '@/components/ProjectList'
-// import ProjectDetail from '@/components/ProjectDetail'
 import Search from '@/components/Search'
 import Tag from '@/components/Tag'
 
 import TicketList from '@/components/project/TicketList'
 import TicketForm from '@/components/project/TicketForm'
 import TicketDetail from '@/components/project/TicketDetail'
+import ProjectDetail from '@/components/project/ProjectDetail'
+import ProjectSetting from '@/components/project/ProjectSetting'
 
 Vue.use(Router)
 
@@ -24,6 +25,8 @@ let router =  new Router({
     // {path: '/project/new', component: ProjectForm},
     {path: '/projects', component: ProjectList},
     {path: '/project/:id', component: TicketList},
+    {path: '/project/:id/summary', component: ProjectDetail},
+    {path: '/project/:id/setting', component: ProjectSetting},
     {path: '/project/:project_id/ticket/new', component: TicketForm},
     {path: '/project/:project_id/ticket/:id', component: TicketDetail}
   ]

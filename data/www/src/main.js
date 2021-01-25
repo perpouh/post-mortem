@@ -48,6 +48,11 @@ Vue.toasted.register('success', '保存しました。', {
   duration : 3000
 })
 
+Vue.config.errorHandler = function (err, vm, info) {
+  // 2.2.0 以降で使用できます。
+  alert(err);
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

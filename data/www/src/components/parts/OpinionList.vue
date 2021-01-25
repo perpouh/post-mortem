@@ -1,5 +1,5 @@
 <template>
-    <div class="ticket-list contents">
+    <div class="ticket-list">
       <div class="list-header">
       </div>
       <div class="list-body">

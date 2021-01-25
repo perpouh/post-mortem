@@ -1,5 +1,5 @@
 <template>
-  <layout>
+  <layout tab="ticket">
     <ticket-list :tickets="tickets" :project_id="project_id"></ticket-list>
   </layout>
 </template>

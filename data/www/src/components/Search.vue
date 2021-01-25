@@ -1,7 +1,9 @@
 <template>
   <layout>
     <h2>検索結果</h2>
-    <opinion-list :opinions="opinions" :highlight="searchWords"></opinion-list>
+    <div class="contents">
+      <opinion-list :opinions="opinions" :highlight="searchWords"></opinion-list>
+    </div>
   </layout>
 </template>
 
