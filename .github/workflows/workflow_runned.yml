@@ -4,6 +4,8 @@ on:
   workflow_run:
     workflows:
       - OnPush
+    branches:
+      - 'feature/test_scheduled_update'
     types:
       - completed
 
