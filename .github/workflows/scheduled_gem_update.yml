@@ -1,8 +1,11 @@
 name: scheduled_gem_update
 
-on: 
+on:
   schedule:
-   - cron: 0 4 * * 6
+    - cron: 0 4 * * 6
+  push:
+    branches:
+      - feature/github_ci_bundle_update_and_unit_test
 
 jobs:
   bundle_update:
@@ -43,3 +46,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           hub pull-request -b master -m "[Scheduled]develop to master"
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+        # change this to (see https://github.com/ruby/setup-ruby#versioning):
+        # uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@21351ecc0a7c196081abca5dc55b08f085efe09a
+        with:
+          ruby-version: 2.6
+        env:
+          ImageOS: ubuntu18
+      - name: Install dependencies
+        run: |
+          cd server
+          bundle install
+      - name: Run rubocop
+        run: |
+          cd server
+          bundle exec rubocop
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          DB_USER: root
+          DB_PASSWORD: root
+          DB_HOST: localhost
+          DB_DATABASE: post-mortem_test
+          CLIENT_HOST: www.example.com
+        run: |
+          sudo /etc/init.d/mysql start
+          cd server
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rspec
