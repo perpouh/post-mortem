@@ -11,7 +11,7 @@ jobs:
   bundle_update:
     runs-on: ubuntu-latest
     env:
-      DATE: date +"%Y%m%d%H%M"
+      DATE: ${{date +"%Y%m%d%H%M"}}
     steps:
       - name: checkout dev
         uses: actions/checkout@v2
