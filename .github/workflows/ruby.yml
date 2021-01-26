@@ -10,6 +10,13 @@ name: Ruby
 on:
   pull_request:
     branches: [ master ]
+  workflow_run:
+    workflows:
+      - scheduled_gem_update
+    branches:
+      - 'feature/gem-upgrade_**'
+    types:
+      - completed
 
 jobs:
   test:
