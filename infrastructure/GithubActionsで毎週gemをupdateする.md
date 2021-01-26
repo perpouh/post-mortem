@@ -48,7 +48,8 @@ on:
 cronの設定は何回やっても忘れるのでこちらを参考にしました:[crontab.guru](https://crontab.guru/)  
 世の中には便利なサイトがいっぱいあるなあ。
 
-一応これで毎週土曜日の午前四時にこの`gem update`その他が動くはずです。まだ書いてから土曜が来ていないのでわかりません。動くといいな。
+一応これで毎週土曜日の午前四時にこの`gem update`その他が動きます。  
+※土曜の朝四時に動かすはずでしたが、JSTではなくUTCだったので（そりゃそうか）昼の一時に動いています。まあ別に困らないしいいかと思って放置しています。
 
 ## bundler-diff
 
@@ -58,3 +59,22 @@ cronの設定は何回やっても忘れるのでこちらを参考にしまし�
 
 githubリポジトリ: [sinsoku/bundler-diff](https://github.com/sinsoku/bundler-diff/tree/master/examples)
 
+## 自動テスト
+
+このactionが動くとPRが作られるため（ここまでは確認済み）、PRの方のフックに引っかかって自動テストが行われる予定だったのですが、それはそう書かないと動かないっぽいので追記します。  
+
+フックとして `workflow_run` を追加
+
+```yaml
+on:
+  workflow_run:
+    workflows:
+      - scheduled_gem_update
+    branches:
+      - 'feature/gem-upgrade_**'
+    types:
+      - completed
+```
+
+やり方はmohikanzで教えてもらいました。ありがとうモヒカン。  
+これで動く！はず！（結果は土曜の13時）
