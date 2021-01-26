@@ -18,7 +18,7 @@ jobs:
           TZ: "Asia/Tokyo"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DATE=`date +"%Y%m%d"`
+          DATE=`date +"%Y%m%d%H%M"`
           BRANCH_NAME="feature/gem-upgrade_$DATE"
           git checkout -b "$BRANCH_NAME"
       - name: Set up Ruby 2.6
