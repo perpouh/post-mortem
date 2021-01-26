@@ -30,7 +30,7 @@ RSpec.describe TicketsController, type: :request do
 
     it 'returns http success' do
       get project_ticket_path(project, project.tickets.first), headers: @auth_tokens
-      expect(response).to have_http_status(:unauthorized)
+      expect(response).to have_http_status(:success)
     end
   end
 
