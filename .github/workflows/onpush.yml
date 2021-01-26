@@ -1,0 +1,12 @@
+name: OnPush
+
+on:
+  push:
+    branches:
+      - "feature/test_scheduled_update"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "呼び出し元"

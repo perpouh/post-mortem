@@ -1,0 +1,14 @@
+name: Yo
+
+on:
+  workflow_run:
+    workflows:
+      - OnPush
+    types:
+      - completed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "呼び出され"
