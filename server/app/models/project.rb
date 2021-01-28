@@ -17,10 +17,10 @@ class Project < ApplicationRecord
   # validates :manager_id
 
   # TODO: predecessor プロジェクトの引き継ぎを実装したい
+
   # https://developer.nulab.com/ja/docs/backlog/api/2/get-project-user-list/#
-  def assign(backlog_users)
-    backlog_users.each do |backlog_user|
-      user = User.find_or_invite({ email: backlog_user.mailAddress })
+  def assign(users)
+    users.each do |user|
       members << Member.new({ user_id: user.id })
     end
   end

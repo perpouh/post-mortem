@@ -10,6 +10,15 @@ class ProjectsController < AuthenticatedController
     render json: { status: :ok, message: 'プロジェクトを作成しました', created: @project.id }
   end
 
+  def read
+    #URL判定して
+    connector = ExtarnalApi.generate_connector(url)
+    #適宜情報を取得して
+    @project = connector.project
+    @project.assign(connector.members)
+    render 'show', status: :ok
+  end
+
   def update
     @project = Project.find(params[:id])
 
