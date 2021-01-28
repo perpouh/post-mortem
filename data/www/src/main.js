@@ -52,6 +52,18 @@ Vue.config.errorHandler = function (err, vm, info) {
   // 2.2.0 以降で使用できます。
   alert(err);
 }
+window.addEventListener("error", event => {
+  alert(event.error);
+});
+window.addEventListener("unhandledrejection", event => {
+  switch(event.reason.response.status){
+    case 401:
+      location.href = "/#/sign_in" // TODO: やだ
+      break;
+    default:
+      console.log(event.reason); // TODO: デプロイ時には消す
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
