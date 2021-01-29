@@ -6,7 +6,7 @@ class TicketsController < AuthenticatedController
   before_action :owner, only: [:update]
 
   def index
-    @tickets = Ticket.where({ project_id: params[:project_id] })
+    @tickets = Ticket.where({ project_id: params[:project_id] }).tickets_only.page(params[:page] || 1).per(1)
   end
 
   def show

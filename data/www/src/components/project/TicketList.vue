@@ -1,6 +1,7 @@
 <template>
   <layout tab="ticket">
     <ticket-list :tickets="tickets" :project_id="project_id"></ticket-list>
+    <button class="btn btn-primary" @click="page++">押す</button>
   </layout>
 </template>
 
@@ -11,7 +12,8 @@ export default {
   data(){
     return {
       tickets: [],
-      project_id: null
+      project_id: null,
+      page: 1
     }
   },
   components: {
@@ -22,17 +24,15 @@ export default {
     this.fetchData()
   },
   watch: {
-    '$route': 'fetchData'
+    '$route': 'fetchData',
+    'page': 'fetchData'
   },
   methods: {
     fetchData () {
       this.project_id = this.$route.params.id
-      this.$http.get(`/projects/${this.project_id}`)
+      this.$http.get(`/projects/${this.project_id}/tickets`,{params: {page: this.page}})
       .then(function(res){
-        // this.project = res.data.project
-        this.tickets = res.data.project.tickets
-        // this.members = res.data.project.members
-        // this.manager = res.data.project.manager
+        this.tickets = res.data.tickets
       }.bind(this))
     }
   }
