@@ -5,6 +5,8 @@ class Project < ApplicationRecord
   has_many :tickets, -> { tickets_only }
   belongs_to :manager, class_name: 'User'
 
+  accepts_nested_attributes_for :members
+
   scope :joining, ->(user_id) { where(id: Member.project_list(user_id).map(&:project_id)) }
 
   validates :name, length: { minimum: 1, maximum: 100 }, uniqueness: { case_sensitive: false }

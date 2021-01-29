@@ -19,25 +19,27 @@ module Extarnal
     def project
       params = @client.get_project @project_id
       Project.new({
-        name: params.name
+        name: params.body.name,
+        backlog_url: "https://#{ENV.fetch('BACKLOG_SPACE_ID')}.backlog.com/projects/#{@project_id}"
       })
     end
 
     def members
       members = @client.get_project_users @project_id
-      members.map do |member|
-        user = User.find_by(email: member[:mailAddress])
-        return user if user.present?
+      members.body.map do |member|
+        user = User.find_by(email: member.mailAddress)
+        next user if user.present?
     
         user = User.create({
-          email: member[:mailAddress], 
+          email: member.mailAddress, 
           password: ENV.fetch('DEFAULT_PASSWORD'){ 'password' },
-          nickname: member[:name],
-          username: member[:userId]
+          nickname: member.name,
+          username: member.name
           })
-        send_reset_password_instructions({email: email})
+        user.confirm
+        user.send_reset_password_instructions
     
-        return user
+        next user
       end
     end
   end

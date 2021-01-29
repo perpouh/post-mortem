@@ -4,7 +4,10 @@ json.project do
     json.partial! partial: 'tickets/detail', locals: { ticket: ticket }
   end
   json.manager @project.manager
-  json.members @project.users do |member|
-    json.name member.username
+  json.members @project.members do |member|
+    json.id member.id
+    json.user_id member.user_id
+    json.name member.user.username
+    json.email member.user.email
   end
 end
