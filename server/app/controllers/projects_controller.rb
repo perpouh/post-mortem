@@ -35,6 +35,14 @@ class ProjectsController < AuthenticatedController
   private
 
   def project_params
-    params.require(:project).permit(:name, :repository_url, :backlog_url, :jira_url, :confluence_url, :summary, members_attributes: [:user_id])
+    params.require(:project).permit(
+      :name,
+      :repository_url,
+      :backlog_url,
+      :jira_url,
+      :confluence_url,
+      :summary,
+      members_attributes: [:user_id]
+    )
   end
 end
