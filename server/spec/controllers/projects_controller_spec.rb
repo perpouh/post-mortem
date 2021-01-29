@@ -27,6 +27,12 @@ RSpec.describe ProjectsController, type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+  # describe 'GET #fetch' do
+  #   it 'returns http success' do
+  #     get project_fetch_path, headers: @auth_tokens, params: { url: "https://perpoor.backlog.com/projects/TEST_PROJECT_1" }
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
   describe 'PATCH #update' do
     it 'returns http success' do
       patch project_path(project), params: { project: { name: 'タイトル更新' } }, headers: @auth_tokens

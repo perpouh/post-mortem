@@ -1,19 +1,30 @@
 <template>
   <layout>
-    <dl>
-      <dt>Project Name</dt>
+    <div class="contents">
+      <h2>URLから読み込む</h2>
+      <input type="url" v-model="url"><br />
+      <p>Backlog/Jira/ほげ/ふが<!-- TODO: APIキーがあるかどうかで出し分けとかしたい --></p>
+      <button type="button" class="btn btn-primary" @click="fetch">読み込む</button>
+    </div>
+    <dl class="contents">
+      <dt>プロジェクト名</dt>
       <dd><input type="text" placeholder="日本語での登録が可能です。" v-model="project.name"></dd>
-      <dt>Backlog URL<small>BacklogのプロジェクトURLを登録すると、Backlogの情報からメンバー一覧を取得することができます。</small></dt>
-      <dd><input type="url" placeholder="https://subdomain.backlog.jp/projects/project-code" v-model="project.backlog_url"></dd>
-      <dt>Repository URL<small>任意。あとからプロジェクトを見返すときに便利です。</small></dt>
-      <dd><input type="url" v-model="project.repository_url"></dd>
-      <dt>Jira URL<small>任意。あとからプロジェクトを見返すときに便利です。</small></dt>
-      <dd><input type="url" v-model="project.jira_url"></dd>
-      <dt>Confluence URL<small>任意。あとからプロジェクトを見返すときに便利です。</small></dt>
-      <dd><input type="url" v-model="project.confluence_url"></dd>
-      <dt></dt>
-      <dd><button class="btn-primary" @click="send">送信</button></dd>
+      <dt>概要</dt>
+      <dd><textarea placeholder="マークダウンで記述できるようにしたい気がしなくもない" v-model="project.summary"></textarea></dd>
     </dl>
+    <div class="contents">
+    <h3>メンバー</h3>
+      <ul>
+        <li v-for="member in project.members" :key="member.id">{{member.name}} {{member.email}}</li>
+      </ul>
+    </div>
+
+    <input type="text" autocomplete="on" list="users">
+    <datalist id="users">
+      <option>ゆうすけ</option><!-- TODO: ユーザー一覧から取得 -->
+      <option>たかし</option>
+    </datalist>
+    <button class="btn-primary" @click="send">送信</button>
   </layout>
 </template>
 
@@ -25,14 +36,32 @@ export default{
     return {
       project: {
         name: "",
-        backlog_url: "",
-        repository_url: "",
-        jira_url: "",
-        confluence_url: ""
-      }
+        summary: "",
+        members_attributes: []
+      },
+      url: "",
+      members: []
     }
   },
   methods: {
+    fetch(){
+      let loader = this.$loading.show();
+      this.$http.get(`/project/fetch`, {
+        params: {'url': this.url}
+      })
+      .then(function(res){
+        this.$toasted.global.success()
+        this.project = res.data.project
+        this.members = res.data.project.members
+        this.project.members_attributes = res.data.project.members.map(member => {return {'user_id' : member.user_id}})
+      }.bind(this))
+      .catch(function (error) {
+        this.$toasted.global.error({message: error.data.message})
+      }.bind(this))
+      .then(function(){
+        loader.hide()
+      })
+    },
     send(){
       let loader = this.$loading.show();
       this.$http.post(`/projects`, {project: this.project})

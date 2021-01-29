@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :opinions, only: [:index]
   end
+  get "project/fetch", to: "projects#fetch", defaults: { format: :json }
 
   namespace :my do
     get "projects", to: "projects#index", defaults: {format: :json}
