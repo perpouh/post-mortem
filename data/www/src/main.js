@@ -51,9 +51,11 @@ Vue.toasted.register('success', '保存しました。', {
 Vue.config.errorHandler = function (err, vm, info) {
   // 2.2.0 以降で使用できます。
   alert(err);
+  console.log(err);
 }
 window.addEventListener("error", event => {
   alert(event.error);
+  console.log(event.error);
 });
 window.addEventListener("unhandledrejection", event => {
   switch(event.reason.response.status){
