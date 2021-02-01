@@ -2,6 +2,9 @@
 
 いろいろやりたかったのでいろいろやっている
 
+![Rubocop](https://github.com/perpouh/post-mortem/workflows/Rubocop/badge.svg)
+![Rspec](https://github.com/perpouh/post-mortem/workflows/Rspec/badge.svg)
+
 ## フォルダ
 
  - client  
