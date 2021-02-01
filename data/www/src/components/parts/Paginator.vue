@@ -1,10 +1,10 @@
 <template>
   <div class="paginator">
-    <button class="btn prev" :disabled="paginator.first" @click="current_page--">Prev</button>
-    …
-    <button class="btn" v-for="page in pages" :key="page" @click="current_page=page">{{page}}</button>
-    …
-    <button class="btn next" :disabled="paginator.last" @click="current_page++">Next</button>
+    <button class="paginator__page prev" :disabled="paginator.first" @click="current_page--">Prev</button>
+    <span v-if="current_page>3">...</span>
+    <button class="paginator__page" v-for="page in pages" :key="page" @click="current_page=page" :class="{'current': page == current_page}">{{page}}</button>
+    <span v-if="current_page<(total_pages - 3)">...</span>
+    <button class="paginator__page next" :disabled="paginator.last" @click="current_page++">Next</button>
   </div>
 </template>
 
@@ -48,13 +48,12 @@ export default{
   methods:{
     range(start, end, step=1){
       let arr=[]
-      for(var i=start;i<end;i+=step){
+      for(var i=start;i<=end;i+=step){
         arr.push(i);
       }
       return arr;
     },
     emit() {
-      console.log('hoge')
       this.$emit("paging", this.current_page);
     }
   }

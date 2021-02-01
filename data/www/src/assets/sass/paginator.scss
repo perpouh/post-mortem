@@ -1,0 +1,22 @@
+.paginator{
+  width: fit-content;
+  margin: 0 auto;
+  line-height: 24pt;
+  padding: 0px 24px;
+  &__page{
+    min-width: 2em;
+    text-align: center;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0 8px;
+    &.current{
+      background-color: $accent-color;
+    }
+  }
+  .prev, .next{
+    color: $accent-color;
+    &:disabled{
+      color: #666;
+    }
+  }
+}
