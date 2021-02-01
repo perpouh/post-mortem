@@ -10,7 +10,6 @@
           <input type="radio" id="try_to" value="try_to" v-model="ticket.opinion_type">
           <label for="try_to" class="try_to">Try</label>
         </div>
-        <button class="btn-primary">テンプレート</button>
       </div>
       <auto-scale-text-area @send="sendTicket" :placeholder="placeholder"></auto-scale-text-area>
     </form>
@@ -43,6 +42,7 @@ export default{
       this.$http.post(`/projects/${this.$route.params.project_id}/tickets`, {ticket: this.ticket})
       .then(function(res){
         this.$toasted.global.success()
+        this.$router.push(`/project/${this.$route.params.project_id}`)
       }.bind(this))
       .catch(function (error) {
         this.$toasted.global.error({message: error.data.message})

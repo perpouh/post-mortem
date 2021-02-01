@@ -1,8 +1,8 @@
 <template>
   <layout>
-    <div class="contents">
+    <div class="contents fetch_url">
       <h2>URLから読み込む</h2>
-      <input type="url" v-model="url"><br />
+      <input type="url" v-model="url" placeholder="https://~~"><br />
       <p>Backlog/Jira/ほげ/ふが<!-- TODO: APIキーがあるかどうかで出し分けとかしたい --></p>
       <button type="button" class="btn btn-primary" @click="fetch">読み込む</button>
     </div>
@@ -10,7 +10,7 @@
       <dt>プロジェクト名</dt>
       <dd><input type="text" placeholder="日本語での登録が可能です。" v-model="project.name"></dd>
       <dt>概要</dt>
-      <dd><textarea placeholder="マークダウンで記述できるようにしたい気がしなくもない" v-model="project.summary"></textarea></dd>
+      <dd><textarea v-model="project.summary"></textarea></dd>
     </dl>
     <div class="contents">
     <h3>メンバー</h3>

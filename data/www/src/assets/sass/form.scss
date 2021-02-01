@@ -20,22 +20,26 @@ dl{
   }
 }
 
-input[type="text"], input[type="url"], input[type="email"], input[type="password"]{
-  background-color: #f1f1f1;
-  border: 1px solid #f1f1f1;
-  border-radius: 2px;
+input[type="text"], input[type="url"], input[type="email"], input[type="password"], textarea{
+  background-color: #fff;
+  border-radius: 4px;
   box-sizing: border-box;
   width: 100%;
-  height: $line-base * 1.5;
+  height: 36px;
   font-size: 1em;
   padding: 0px 1em;
+  box-shadow: 0 0 2px 0px rgb(0 0 0 / 40%) inset;
   &:not(:first-of-type){
     margin-top: $line-base * .5;
   }
 }
 
+textarea{
+  height: 5em;
+}
+
 .btn-primary{
-  @include button();
+  @include button($accent-color);
   &:disabled{
     background-color: #ddd;
     color: #999;
@@ -52,15 +56,15 @@ input[type="text"], input[type="url"], input[type="email"], input[type="password
     &:checked + label{
       background-color: rgba(0,0,0,.05);
       &.keep_on{
-        background-color: #28a745;
+        background-color: $keep;
         color: white;
       }
       &.problem{
-        background-color: #cb2431;
+        background-color: $problem;
         color: white;
       }
       &.try_to{
-        background-color: #0366d6;
+        background-color: $try;
         color: white;
       }
     }
@@ -76,9 +80,9 @@ input[type="text"], input[type="url"], input[type="email"], input[type="password
   }
 }
 
-textarea{
-  width: 100%;
-  border: 1px solid;
-  padding: 12px;
+.fetch_url{
+  background-color: $ticket-header-color;
+  border: 1px solid $accent-color;
   border-radius: 4px;
+  padding: 24px 48px;
 }
