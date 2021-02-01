@@ -11,15 +11,19 @@
       </div>
       <div id="newer" class="tab-body contents" v-show="newer">
         <ticket-list :tickets="tickets"></ticket-list>
+        <paginator :paginator="paginator" :page="page" @paging="page=$event" />
       </div>
       <div id="active" class="tab-body contents" v-show="active">
         <ticket-list :tickets="tickets"></ticket-list>
+        <paginator :paginator="paginator" :page="page" @paging="page=$event" />
       </div>
       <div id="mentioned" class="tab-body contents" v-show="mentioned">
-        <ticket-list :tickets="tickets"></ticket-list>
+        <opinion-list :opinions="opinions" highlight=""></opinion-list>
+        <paginator :paginator="paginator" :page="page" @paging="page=$event" />
       </div>
       <div id="bookmark" class="tab-body contents" v-show="bookmark">
-        <ticket-list :tickets="tickets"></ticket-list>
+        <opinion-list :opinions="opinions" highlight=""></opinion-list>
+        <paginator :paginator="paginator" :page="page" @paging="page=$event" />
       </div>
     </div>
   </layout>
@@ -28,12 +32,16 @@
 <script>
 import Layout from './layouts/Layout'
 // import ProjectList from './parts/ProjectList'
+import Paginator from'./parts/Paginator'
 import TicketList from './parts/TicketList'
+import OpinionList from './parts/OpinionList'
 export default{
   data(){
     return {
       tab: 'newer',
-      tickets: []
+      tickets: [],
+      page: 1,
+      paginator: {} // TODO: ネーミングが最悪
     }
   },
   computed:{
@@ -53,20 +61,25 @@ export default{
   components: {
     Layout,
     // ProjectList,
-    TicketList
+    TicketList,
+    Paginator,
+    OpinionList
   },
   created(){
     this.fetchData()
   },
   watch: {
     '$route': 'fetchData',
-    'tab': 'fetchData'
+    'tab': 'fetchData',
+    'page': 'fetchData'
   },
   methods: {
     fetchData () {
-      this.$http.get(`/my/tickets/${this.tab}`)
+      this.$http.get(`/my/tickets/${this.tab}`,{params: {page: this.page}})
       .then(function(res){
-        this.tickets = res.data
+        this.tickets = res.data.tickets
+        this.opinions = res.data.opinions
+        this.paginator = res.data.paginator
       }.bind(this))
     }
   }

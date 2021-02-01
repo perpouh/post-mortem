@@ -16,6 +16,7 @@
   .row{
     min-height: 4em;
     list-style-type: none;
+    position: relative;
     &.keep_on::before{
       @include badge;
       content: "●"; // ここをSVGに置き換える予定
@@ -31,7 +32,6 @@
       content: "●";
       color: $try;
     }
-    position: relative;
     &:not(:first-of-type){
       border-top: 1px solid $ticket-border-color;
     }

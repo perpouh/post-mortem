@@ -1,0 +1,70 @@
+.opinion-list{
+  border: 1px solid $ticket-border-color;
+  border-radius: 4px;
+  .list-header{
+    background-color: $ticket-header-color;
+    height: 36px;
+    border-bottom: 1px solid $ticket-border-color;
+  }
+  .row{
+    min-height: 4em;
+    list-style-type: none;
+    position: relative;
+    &.keep_on::before{
+      @include badge;
+      content: "●"; // ここをSVGに置き換える予定
+      color: $keep;
+    }
+    &.problem::before{
+      @include badge;
+      content: "●";
+      color: $problem;
+    }
+    &.try_to::before{
+      @include badge;
+      content: "●";
+      color: $try;
+    }
+    &.comment::before{
+      @include badge;
+      content: "●";
+      color: yellow;
+    }
+    &:not(:first-of-type){
+      border-top: 1px solid $ticket-border-color;
+    }
+  }
+  .opinion-body {
+    margin-left: 4em;
+    margin-top: .4em;
+    .opinion-title{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-size: 16pt;
+      width: calc(100% - 64px);
+      height: 2em;
+    }
+  }
+  .opinion-footer{
+    margin-left: 4em;
+    margin-top: .4em;
+    color: $sub-text-color;
+    font-size: 10pt;
+  }
+  .commented{
+    position: absolute;
+    right: 1em;
+    top: .8em;
+    font-size: 10pt;
+    color: $sub-text-color;
+  }
+  .liked{
+    position: absolute;
+    right: 1em;
+    top: 2.4em;
+    font-size: 10pt;
+    color: $sub-text-color;
+  }
+}
