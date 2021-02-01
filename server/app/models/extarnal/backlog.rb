@@ -18,12 +18,10 @@ module Extarnal
 
     def project
       params = @client.get_project @project_id
-      Project.new(
-        {
-          name: params.body.name,
-          backlog_url: "https://#{ENV.fetch('BACKLOG_SPACE_ID')}.backlog.com/projects/#{@project_id}"
-        }
-      )
+      Project.new({
+        name: params.body.name,
+        backlog_url: "https://#{ENV.fetch('BACKLOG_SPACE_ID')}.backlog.com/projects/#{@project_id}"
+      })
     end
 
     def members
@@ -39,14 +37,13 @@ module Extarnal
     private
 
     def parse_user(backlog_user)
-      user = User.create(
-        {
-          email: backlog_user.mailAddress,
-          password: ENV.fetch('DEFAULT_PASSWORD') { 'password' },
-          nickname: backlog_user.name,
-          username: backlog_user.name
-        }
-      ).confirm
+      user = User.create({
+        email: backlog_user.mailAddress,
+        password: ENV.fetch('DEFAULT_PASSWORD') { 'password' },
+        nickname: backlog_user.name,
+        username: backlog_user.name
+      })
+      user.confirm
       user.send_reset_password_instructions
       user
     end
