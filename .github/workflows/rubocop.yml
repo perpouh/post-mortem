@@ -8,9 +8,11 @@
 name: Rubocop
 
 on:
+  pull_request:
+    branches: [ master ]
   push:
     paths:
-    - 'server/app/**/*.rb'
+    - '/server/app/**/*.rb'
 
 jobs:
   test:
