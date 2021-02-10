@@ -16,7 +16,8 @@ module.exports = {
       {
         title: 'インフラ',
         children: [
-          ["infrastructure/Docker", "Docker"]
+          ["infrastructure/GithubActionsで毎週gemをupdateする", "GithubActionsで毎週gemをupdateする"],
+          ["infrastructure/GithubActionsで自動テストをやる", "GithubActionsで自動テストをやる"]
         ]
       },
       {
@@ -32,7 +33,7 @@ module.exports = {
           ["rails/rack-corsを導入する", "rack-corsを導入する"],
           ["rails/devise_token_auth導入と設定", "devise_token_auth導入と設定"]
         ]
-      },
+      }
     ],
     sidebarDepth: 2
   },
