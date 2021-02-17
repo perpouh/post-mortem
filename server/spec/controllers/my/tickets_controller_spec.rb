@@ -27,12 +27,14 @@ RSpec.describe My::TicketsController, type: :request do
 
     it '参加しているプロジェクトのチケットが表示されること' do
       get my_tickets_active_path, headers: @auth_tokens
-      expect(JSON.parse(response.body).map{ |v| v['project_id'] }.uniq.include? project_a.id).to be true
+      Rails.logger.info '目印'
+      Rails.logger.debug JSON.parse(response.body)
+      expect(JSON.parse(response.body)["tickets"].map { |v| v['project_id'] }.uniq.include? project_a.id).to be true
     end
 
     it '参加していないプロジェクトのチケットが表示されないこと' do
       get my_tickets_active_path, headers: @auth_tokens
-      expect(JSON.parse(response.body).map{ |v| v['project_id'] }.uniq.include? project_b.id).to be false
+      expect(JSON.parse(response.body)["tickets"].map{ |v| v['project_id'] }.uniq.include? project_b.id).to be false
     end
 
     # it 'チケットの作成日時でソートされること' do
@@ -58,12 +60,12 @@ RSpec.describe My::TicketsController, type: :request do
 
     it '参加しているプロジェクトのチケットが表示されること' do
       get my_tickets_active_path, headers: @auth_tokens
-      expect(JSON.parse(response.body).map{ |v| v['project_id'] }.uniq.include? project_a.id).to be true
+      expect(JSON.parse(response.body)["tickets"].map{ |v| v['project_id'] }.uniq.include? project_a.id).to be true
     end
 
     it '参加していないプロジェクトのチケットが表示されないこと' do
       get my_tickets_active_path, headers: @auth_tokens
-      expect(JSON.parse(response.body).map{ |v| v['project_id'] }.uniq.include? project_b.id).to be false
+      expect(JSON.parse(response.body)["tickets"].map{ |v| v['project_id'] }.uniq.include? project_b.id).to be false
     end
 
     # it 'チケットの更新日時でソートされること' do
@@ -90,7 +92,7 @@ RSpec.describe My::TicketsController, type: :request do
       it 'メンションされているチケットだけが表示されること' do
         get my_tickets_mentioned_path, headers: @auth_tokens
         # 書き方が気に食わない
-        expect(JSON.parse(response.body).map{ |v| v["body"] }.all?{ |v| v.include? '@username' }).to be true
+        expect(JSON.parse(response.body)["opinions"].map{ |v| v["body"] }.all?{ |v| v.include? '@username' }).to be true
       end
     end
 
@@ -98,7 +100,7 @@ RSpec.describe My::TicketsController, type: :request do
       it 'メンションされているチケットだけが表示されること' do
         get my_tickets_mentioned_path, headers: @auth_tokens
         # 書き方が気に食わない
-        expect(JSON.parse(response.body).map{ |v| v["body"] }.all?{ |v| v.include? '@username' }).to be true
+        expect(JSON.parse(response.body)["opinions"].map{ |v| v["body"] }.all?{ |v| v.include? '@username' }).to be true
       end
     end
 

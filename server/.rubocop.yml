@@ -1998,12 +1998,6 @@ Lint/SuppressedException:
   VersionAdded: '0.9'
   VersionChanged: '0.81'
 
-Lint/Syntax:
-  Description: 'Checks syntax error.'
-  Enabled: true
-  VersionAdded: '0.9'
-
-
 Lint/ToEnumArguments:
   Description: 'This cop ensures that `to_enum`/`enum_for`, called for the current method, has correct arguments.'
   Enabled: pending
@@ -3218,8 +3212,6 @@ Style/ExplicitBlockArgument:
                   that just passes its arguments to another block.
   StyleGuide: '#block-argument'
   Enabled: true
-  # May change the yielding arity.
-  Safe: false
   VersionAdded: '0.89'
 
 Style/ExponentialNotation:
