@@ -46,9 +46,9 @@ gem 'ransack'
 gem 'devise'
 gem 'devise_token_auth'
 
-# AWS関連
+# ファイルアップロード関連
 gem 'aws-sdk-s3'
-
+gem 'shrine'
 
 # 静的ページレンダラー
 gem 'hanmoto'
