@@ -13,6 +13,8 @@ import TicketDetail from '@/components/project/TicketDetail'
 import ProjectDetail from '@/components/project/ProjectDetail'
 import ProjectSetting from '@/components/project/ProjectSetting'
 
+import UserSetting from '@/components/UserSetting'
+
 Vue.use(Router)
 
 let router =  new Router({
@@ -28,7 +30,8 @@ let router =  new Router({
     {path: '/project/:id/summary', component: ProjectDetail},
     {path: '/project/:id/setting', component: ProjectSetting},
     {path: '/project/:project_id/ticket/new', component: TicketForm},
-    {path: '/project/:project_id/ticket/:id', component: TicketDetail}
+    {path: '/project/:project_id/ticket/:id', component: TicketDetail},
+    {path: '/settings', component: UserSetting}
   ]
 })
 

@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     get "tickets/newer", to: "tickets#newer", defaults: {format: :json}
     get "tickets/active", to: "tickets#active", defaults: {format: :json}
     get "tickets/mentioned", to: "tickets#mentioned", defaults: {format: :json}
+    get "profile/show", to: "profile#show", defaults: {format: :json}
   end
 end

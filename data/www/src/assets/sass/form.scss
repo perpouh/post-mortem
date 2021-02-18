@@ -38,6 +38,10 @@ textarea{
   height: 5em;
 }
 
+input[type='file']{
+  display: none;
+}
+
 .btn-primary{
   @include button($accent-color);
   &:disabled{
