@@ -29,10 +29,7 @@ RUN apk update \
       yaml-dev \
       zlib-dev \
     && bundle install -j4 \
-    && apk del .build-dependencies \
-    && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-
-RUN apk add yarn && yarn install
+    && apk del .build-dependencies
 
 ARG ASSETS_PRECOMPILE=true
 RUN if [ ${ASSETS_PRECOMPILE} = true ]; then \
