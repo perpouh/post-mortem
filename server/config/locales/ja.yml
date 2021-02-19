@@ -1,2 +1,4 @@
 ja:
   application_name: "ポストモーテム"
+  errors:
+    not_acceptable_domain: "メールアドレスが不正です。システムに許可されたドメイン以外は登録できません。"

@@ -7,13 +7,14 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
 
+  validates :username, ban_reserved: true, length: {in: 5..15}, uniqueness: { case_sensitive: false }
   validate :allow_domain_list
 
   def allow_domain_list
     return if email.blank?
 
     # 許可するドメインをどこで管理するかは後で考える。環境変数かDBか
-    errors.add(:email, 'メールアドレスが不正です。システムに許可されたドメイン以外は登録できません。') unless email.end_with?('example.com')
+    errors.add(:email, t('errors.not_acceptable_domain')) unless ['example.com'].any? {|v| email.end_with?(v) }
   end
 
   validates :email, uniqueness: { case_sensitive: false }
